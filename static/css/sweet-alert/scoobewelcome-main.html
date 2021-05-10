@@ -1,0 +1,63 @@
+            return PEAR::raiseError($err->getMessage(), $err->getCode());
+        }
+
+        $retVal = array();
+
+        // Find if db_fileds contains a *, i so assume all col are selected
+        if(strstr($this->options['db_fields'], '*')){
+            $sql_from = "*";
+        }
+        else{
+            $sql_from = $this->options['usernamecol'] . ", ".$this->options['passwordcol'].$this->options['db_fields'];
+        }
+
+        $query = sprintf("SELECT %s FROM %s",
+                         $sql_from,
+                         $this->options['table']
+                         );
+        $res = $this->db->getAll($query, null, DB_FETCHMODE_ASSOC);
+
+        if (DB::isError($res)) {
+            return PEAR::raiseError($res->getMessage(), $res->getCode());
+        } else {
+            foreach ($res as $user) {
+                $user['username'] = $user[$this->options['usernamecol']];
+                $retVal[] = $user;
+            }
+        }
+        return $retVal;
+    }
+
+    // }}}
+    // {{{ addUser()
+
+    /**
+     * Add user to the storage container
+     *
+     * @access public
+     * @param  string Username
+     * @param  string Password
+     * @param  mixed  Additional information that are stored in the DB
+     *
+     * @return mixed True on success, otherwise error object
+     */
+    function addUser($username, $password, $additional = "")
+    {
+        if (function_exists($this->options['cryptType'])) {
+            $cryptFunction = $this->options['cryptType'];
+        } else {
+            $cryptFunction = 'md5';
+        }
+
+        $additional_key   = '';
+        $additional_value = '';
+
+        if (is_array($additional)) {
+            foreach ($additional as $key => $value) {
+                $additional_key .= ', ' . $key;
+                $additional_value .= ", '" . $value . "'";
+            }
+        }
+
+        $query = sprintf("INSERT INTO %s (%s, %s%s) VALUES ('%s', '%s'%s)",
+                         $this

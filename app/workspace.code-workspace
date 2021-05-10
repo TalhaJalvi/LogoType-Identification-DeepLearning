@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "E:\\Django practice\\imageclassifier"
+		},
+		{
+			"path": "..\\.."
+		}
+	],
+	"settings": {
+		"terminal.integrated.cwd": "D:\\FYPImplementation\\Logo_Type_Identification_System\\"
+	}
+}

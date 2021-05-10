@@ -1,0 +1,63 @@
+ction.parens.begin.perl - string
+#  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.parens.perl
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted.perl
+#                                     ^^ constant.character.escape.perl
+#                                           ^ punctuation.section.parens.end.perl - string
+  q['
+# ^ support.function.perl
+#  ^ punctuation.section.brackets.begin.perl - string
+#   ^^ string
+    string
+#   ^^^^^^^ string
+  ']
+# ^ string
+#  ^ punctuation.section.brackets.end.perl - string
+  q<'
+# ^ support.function.perl
+#  ^ punctuation.section.generic.begin.perl - string
+#   ^^ string
+    string
+#   ^^^^^^^ string
+  '>
+# ^ string
+#  ^ punctuation.section.generic.end.perl - string
+
+###[ REGEX ]##################################################################
+
+  /[a-z]test\d{3}/g;
+# ^ punctuation.section.generic.begin.perl - string.regexp - source.regexp
+#  ^^^^^^^^^^^^^^ string.regexp.perl source.regexp
+#                ^ punctuation.section.generic.end.perl - string.regexp - source.regexp
+#                 ^ constant.language.flags.regexp.perl
+  ( /[a-z]test\d{3}/g );
+#   ^ punctuation.section.generic.begin.perl - string.regexp - source.regexp
+#    ^^^^^^^^^^^^^^ string.regexp.perl source.regexp
+#                  ^ punctuation.section.generic.end.perl - string.regexp - source.regexp
+#                   ^ constant.language.flags.regexp.perl
+  $@ = /[a-z]test\d{3}/g;
+#      ^ punctuation.section.generic.begin.perl - string.regexp - source.regexp
+#       ^^^^^^^^^^^^^^ string.regexp.perl source.regexp
+#                     ^ punctuation.section.generic.end.perl - string.regexp - source.regexp
+#                      ^ constant.language.flags.regexp.perl
+  m{^\s*(?:(-?\s*)(\d+(?:\.\d+){0,3})/(\d+))}; # comment
+# ^ support.function.perl - meta.braces
+#  ^ punctuation.section.braces.begin.perl - string
+#  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.braces.perl
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.regexp.perl
+#                                           ^ punctuation.section.braces.end.perl - string
+#                                            ^ punctuation.terminator.statement.perl
+#                                              ^ comment.line.number-sign.perl punctuation.definition.comment.begin.perl
+  m(^\s*(?:(-?\s*)(\d+(?:\.\d+){0,3})/(\d+))); # comment
+# ^ support.function.perl - meta.parens
+#  ^ punctuation.section.parens.begin.perl - string
+#  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.parens.perl
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.regexp.perl
+#                                           ^ punctuation.section.parens.end.perl - string
+#                                            ^ punctuation.terminator.statement.perl
+#                                              ^ comment.line.number-sign.perl punctuation.definition.comment.begin.perl
+  m[^\s*(?:(-?\s*)(\d+(?:\.\d+){0,3})/(\d+))]; # comment
+# ^ support.function.perl - meta.brackets
+#  ^ punctuation.section.brackets.begin.perl - string
+#  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.brackets.perl
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.regexp.perl
+#                              

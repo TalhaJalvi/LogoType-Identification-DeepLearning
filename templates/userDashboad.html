@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>User Dashboard</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <style>
+    /*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    perspective: 1500px;
+}
+
+
+#sidebar {
+    margin-top:5%;
+    min-width: 250px;
+    max-width: 250px;
+    background:#3C3C3C;
+    color: #fff;
+    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+    transform-origin: bottom left;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+    transform: rotateY(100deg);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #3C3C3C;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+    li{
+        cursor: pointer;
+    }
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.5em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article, a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#sidebarCollapse {
+    width: 40px;
+    height: 40px;
+    background: #f5f5f5;
+    cursor: pointer;
+}
+
+#sidebarCollapse span {
+    width: 80%;
+    height: 2px;
+    margin: 0 auto;
+    display: block;
+    background: #555;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+    transition-delay: 0.2s;
+}
+
+#sidebarCollapse span:first-of-type {
+    transform: rotate(45deg) translate(2px, 2px);
+}
+#sidebarCollapse span:nth-of-type(2) {
+    opacity: 0;
+}
+#sidebarCollapse span:last-of-type {
+    transform: rotate(-45deg) translate(1px, -1px);
+}
+
+
+#sidebarCollapse.active span {
+    transform: none;
+    opacity: 1;
+    margin: 5px auto;
+}
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+        transform: rotateY(90deg);
+    }
+    #sidebar.active {
+        margin-left: 0;
+        transform: none;
+    }
+    #sidebarCollapse span:first-of-type,
+    #sidebarCollapse span:nth-of-type(2),
+    #sidebarCollapse span:last-of-type {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+    }
+    #sidebarCollapse.active span {
+        margin: 0 auto;
+    }
+    #sidebarCollapse.active span:first-of-type {
+        transform: rotate(45deg) translate(2px, 2px);
+    }
+    #sidebarCollapse.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+    #sidebarCollapse.active span:last-of-type {
+        transform: rotate(-45deg) translate(1px, -1px);
+    }
+
+}
+
+
+/* Here lies right divs all classes and ids*/
+
+.mainright1{
+    display:flex;
+    width:100%;
+    height:100%;
+
+}
+.mainright1left{
+    width:30%;
+    height:50%;
+    align-items: center;
+    text-align: center;
+    float:left;
+    box-shadow: 0 0 3px black;
+}
+.mainright1left:hover{
+    box-shadow: 0 0 5px black;
+}
+.mainright1left2{
+    width:30%;
+    height:50%;
+    margin-left:3%;
+    align-items: center;
+    text-align: center;
+    float:left;
+    box-shadow: 0 0 3px black;
+}
+.mainright1left2:hover{
+    box-shadow: 0 0 5px black;
+}
+.mainright1right{
+    width:30%;
+    height:50%;
+    margin-left:3%;
+    align-items: center;
+    text-align: center;
+    float:right;
+    box-shadow: 0 0 3px black;
+}
+.mainright1right:hover{
+    box-shadow: 0 0 5px black;
+}
+.mainright2{
+    display:none;
+    flex-direction:column;
+    width:98%;
+    height:80%;
+    box-shadow: 0 0 3px black;
+    text-align: center;
+    align-items: center;
+
+}
+.mainright4{
+    display:none;
+    width:!00%;
+    height:100%;
+
+}
+/* For making our content more responsive we will introduce here media queries*/
+
+@media only screen and (max-height: 475px) {
+.mainright1left{
+    height:65%;
+}
+.mainright1left2{
+    height:65%;
+}
+.mainright1right{
+    height:65%;
+}
+}
+
+
+@media only screen and (max-width: 1036px) {
+.mainright1left img, .mainright1left2 img, .mainright1right img{
+    height:150px;
+}
+.mainright1left2, .mainright1right{
+    margin-left:2%;
+}
+.mainright1left h3, .mainright1left2 h3, .mainright1right h3{
+    font-size:26px;
+}
+.mainright1left, .mainright1left2 , .mainright1right{
+    height:58%;
+}
+
+
+@media only screen and (max-width: 977px) {
+.mainright1left img, .mainright1left2 img, .mainright1right img{
+    height:150px;
+    width:150px;
+}
+.mainright1left2, .mainright1right{
+    margin-left:2%;
+}
+.mainright1left h3, .mainright1left2 h3, .mainright1right h3{
+    font-size:20px;
+}
+.mainright1left, .mainright1left2 , .mainright1right{
+    height:55%;
+}
+}
+
+
+@media only screen and (max-width: 811px) {
+.mainright1left img, .mainright1left2 img, .mainright1right img{
+    height:120px;
+    width:120px;
+}
+.mainright1left2, .mainright1right{
+    margin-left:2%;
+}
+.mainright1left h3, .mainright1left2 h3, .mainright1right h3{
+    font-size:16px;
+}
+.mainright1left, .mainright1left2 , .mainright1right{
+    height:45%;
+}
+}
+
+
+@media only screen and (max-width: 466px) {
+.mainright1{
+    flex-direction:column;
+}
+.mainright1left{
+    width:98%;
+    height:50%;
+    margin-bottom:2%;
+}
+.mainright1left2{
+    width:98%;
+    height:50%;
+    margin-left:0%;
+    margin-bottom:2%;
+}
+
+.mainright1right{
+    width:98%;
+    height:50%;
+    margin-left:0%;
+    margin-bottom:2%;
+}
+}
+
+
+/* for JS purpose ids of sideba links */
+#chcklgo{
+
+}
+#ushome{
+
+}
+#help{
+
+}
+#myDiv1{
+    
+}
+#myDiv2{
+    
+}
+
+
+
+    </style>
+
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+{%for message in messages%}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Meeage</strong> {{message}}
+</div>
+{% endfor %}
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+
+                     
+            <ul class="list-unstyled components">
+            <li>
+             <a href="dashboard.php"><i class="fas fa-tachometer-alt fa-3x"></i>&nbsp;&nbsp; <span>Dashboard</span> </a>
+                </li>
+               <hr>
+                <li>
+                    <a id="ushome"><i class="fas fa-home fa-2x"></i> Home</a>
+                </li>
+                <li>
+                    <a id="chcklgo" onclick="showrightmenu2()" ><i class="fas fa-search fa-2x"></i> Check Logo Type</a>
+                </li>
+                {% comment %} <li>
+                    <a href="Admin"><i class="fas fa-comment fa-2x"></i> Message/Ask Quey</a>
+                </li> {% endcomment %}
+                <li>
+                    <a id="help" onclick="showrightmenu4()"><i class="fas fa-hands-helping fa-2x"></i> Help</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                     
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                    <!-- These spans are showing three lines of hamburg menu icon-->
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                
+<div class="dropleft">
+  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-user-cog fa-2x"></i>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{% url 'userprofile' %}">Profile</a>
+    <!-- As we are passing it to home page after logging out-->
+    <a class="dropdown-item" href="{% url '' %}">Log Out</a>
+
+  </div>
+</div>
+                </div>
+            </nav>
+            
+            
+
+            <!-- Here Our main page contents will lie-->
+               
+          <!--Here all inner options of main home right page will be shown-->
+
+          <div class="mainright1">
+           
+          <div class="mainright1left">
+          <a onclick="showrightmenu2()">
+           <img src="static\images\Search-images-icon.png" height="200" width="200"/>
+           <h3>Check Logo Type<h3>
+           </a>
+          </div>
+          
+          
+          <!--mainright1left ends above-->
+          <div class="mainright1left2">
+          <img src="static\images\messages-md.png" height="200" width="200"/>
+          <h3>Chat<h3>
+          </div>
+          <!--mainright1left2 ends here-->
+          <div class="mainright1right">
+          <a onclick="showrightmenu4()">
+           <img src="static\images\help.png" height="200" width="200"/>
+           <h3>Help/Read Documentation<h3>
+           </a>
+          </div >
+     
+        <!--mainright1right ends here-->
+          </div>
+        <!-- mainright1 end here above-->
+
+         
+
+       <div class="mainright2">
+        </br>
+        </br>
+        </br>
+        </br>
+        <label>
+        <i style="color:#7386D5;" class="fas fa-cloud-upload-alt fa-10x"></i>
+        </label>
+        </br>
+        <form action="predictimage" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <center><input type="file" name="filepath"/></center>
+        </br>
+        <center><input type="submit" name="upload"/></center>
+        </form>
+             <img src={{filepathname}} alt="hello" width="auto" height="auto">
+        
+        </div>
+
+
+
+
+
+<!--mainright2 ends here above-->
+
+   <div class="mainright4">
+   
+      <button  onclick="myFunction1()"  style="width:100%;background-color:#3C3C3C;color:white;">What it is?</button>
+      <div id="myDIV1" style="display:none;">
+         A project developed by COMSATS undergrad students under supervision of Dr. Mazhyar Sadiq and Lab Engineer 
+         Waqar Ahmed. For sake of designing community and HCI experts and for people who are eager to know about
+         logos.
+         <br>
+         <br>
+        <center> <img src="static\images\purpose.jpg" width="500" height="300"></center>
+      </div> 
+<br>
+<br>
+
+
+ <button  onclick="myFunction2()"  style="width:100%;background-color:#3C3C3C;color:white;">How To Use?</button>
+      <div id="myDIV2" style="display:none;">
+      This is a simple website that allows you to check logo type of your uploaded picture. Upload Your picture 
+      of logo. Then our trained model will give you results by checking logo type.
+         <br>
+         <br>
+         Open site and goto signup/Login Page
+         <br>
+        <center> <img src="static\images\help1.jpg" width="700" height="500"></center>
+        <br>
+        Register your account here
+        <br>
+        <center> <img src="static\images\help2.jpg" width="700" height="500"></center>
+        <br>
+        Login to use our system
+        <br>
+        <center> <img src="static\images\help3.jpg" width="700" height="500"></center>
+         <br>
+         Click on "Check Logo Type" then upload picture and submit it.
+        <center> <img src="static\images\help4.jpg" width="700" height="500"></center>
+      </div> 
+
+<br>
+<br>
+
+
+   </div>
+
+
+        </div>
+        
+        
+
+
+
+    
+
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+
+
+function showrightmenu2(){
+    document.querySelector('.mainright2').style.display='flex';
+        /*Closing all other if opened*/
+        document.querySelector('.mainright1').style.display='none';
+        document.querySelector('.mainright4').style.display='none';
+
+  }
+
+document.getElementById('ushome').addEventListener('click',function showrightmenu1(){
+    document.querySelector('.mainright1').style.display='flex';
+        /*Closing all other if opened*/
+        document.querySelector('.mainright2').style.display='none';
+        document.querySelector('.mainright4').style.display='none';
+
+  })
+
+function showrightmenu4(){
+    document.querySelector('.mainright4').style.display='block';
+        /*Closing all other if opened*/
+        document.querySelector('.mainright1').style.display='none';
+        document.querySelector('.mainright2').style.display='none';
+
+  }
+
+  function myFunction1() {
+  var x = document.getElementById("myDIV1");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}  
+
+
+ function myFunction2() {
+  var x = document.getElementById("myDIV2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}   
+    </script>
+</body>
+
+</html>

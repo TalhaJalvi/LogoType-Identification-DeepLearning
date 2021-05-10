@@ -1,0 +1,3793 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LCX SchemaVersion="2.0" Name="setup" PsrId="211" xmlns="http://schemas.microsoft.com/locstudio/2004/6/lcx">
+  <OwnedComments>
+    <Cmt Name="RCCX" />
+  </OwnedComments>
+  <Item ItemId=";Microsoft.VisualStudio.Setup.Installer.Resources.resources" ItemType="0" PsrId="211" Leaf="false">
+    <Disp Icon="Expand" Expand="true" Disp="true" LocTbl="false" />
+    <Item ItemId=";Strings" ItemType="0" PsrId="211" Leaf="false">
+      <Disp Icon="Str" Disp="true" LocTbl="false" />
+      <Item ItemId=";AddWorkloadsLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Add Workloads]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button label for suggesting to add workloads.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";AddedPackage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Added {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text read to the user when using a screen reader and a package is added to install]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";AlmostThere" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Almost there...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when loading is almost complete]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";AppVersionText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installer version {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The label for the version of the app. {0} is the installer version e.g. 2.0.1000]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";AvailableHeader" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Available]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The tab header on main page for available product card]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";BrazilianPortuguese" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Portuguese (Brazil)]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Brazilian Portuguese]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";BrowseButtonTooltip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Browse]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tooltip for browse directory button on directory picker.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CancelButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[C_ancel]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a button to cancel an operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CannotCloseDuringOperationMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[It looks like you're installing or modifying another product right now.  ]D;]A;  ]D;]A;Please wait until all other operations are finished and try again.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error message shown when the user tries to close the window during an install operation.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CannotOpenLocation_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You can't open this location using this program.{0}Please try a different location.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text used for a dialog when the selected folder location can't be opened. The argument is used to include a newline in between as the dialog that's going to use this string does not allow a regular newline string.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CannotSpecifyInstallPathTwice_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The install path cannot be provided with both {0} and {1}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error message shown to the user when they specify the install path two ways on the cmdline]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ChangeLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Change...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label shown on the side of the installation path before installing a product as an option to change the path]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ChangeUpdateSettings" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Change update settings]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Change update settings label]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ChannelDownloadFailedErrorMessage_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Unable to download the channel manifest from {0}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message of error shown when we fail to download a channel]D;]A;{0} - The URI of the channel that failed to download]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ChannelDownloadFailedErrorTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Failed to download channel]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title of error shown when we fail to download a channel]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ChannelOptionsChannelUriHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The URI or path to the channel manifest to use for updates]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the ChannelUri option in InstallOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ChannelOptionsInstallChannelUriHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The URI or path to the channel manifest to use for the installation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the InstallChannelUri option in InstallOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ChannelProductMismatch_Args3" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Did not find product with ID {0}, version {1}. Instead found these versions: [{2}]5D;. Please close installer and try again.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error shown when new version of product is found in channel.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ChannelsLockedErrorMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[We are in the middle of checking for updates. Please wait a minute and try again.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error shown when a user tries to install while an update check is in progress.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CheckingForSolutions" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Checking for solutions...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when loading solutions for a package failure]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CheckingForUpdates" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Checking for updates...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on UpdateMainPage indicates status]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CheckingForUpdatesCanceled" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Checking for updates canceled.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on update main page when check for updates is canceled]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CheckingForUpdatesFailed" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Checking for updates failed.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on update main page when check for updates failed.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ClearSearch" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Clear search]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tooltip for clear search button]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ClickOKToContinueMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Click OK to continue.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Footer message of error dialog shown when uninstalling a product]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ClickRetryToContinue" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Click retry to continue.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text that gets shown on the second line for the product that failed setup.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Close" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Close]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label to close the window]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CloseButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Close]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a button to close a window]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CloseToolTip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Close]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tool tip for the window close button]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Command" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Command]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown to describe word command]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineDetail_CommandText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Command]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label that is put in front of the actual command line command (e.g. install, update, resume). Used like Command: {actual command}]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineDetail_UsageText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Usage]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label that is put in front of the actual command line usage (some description). Used like Usage: {actual usage}]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineDoesNotSupport_Args3" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[{0} does not support {1} or {2}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Exception message to indicate the specified command is not supported. {0} - first argument, {1} - second argument, {2} - third argument.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineMissingSelectInstanceArguments" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The current operation needs either --channelId and --productId or --installPath]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Exception message to indicate the required argument for instance selection is missing.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineMultipleErrors" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Your parameters contain multiple errors. First error:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown to describe multipe command line errors]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineMutuallyExclusive_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[{0} and {1} are mutually exclusive.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Exception message to indicate two command arguments are mutually exclusive. {0} - first argument, {1} - second argument.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineOptionsDownloadThenInstallOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Downloads all packages before installing]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the DownloadThenInstall option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineOptionsInstallWhileDownloadingOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Enables parallel install and download]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the InstallWhileDownloading option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineRequiredWith_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[{0} is required with {1}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Exception message to indicate two command arguments are required with each other. {0} - first argument, {1} - second argument.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineRequiredWith_Args3" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[{0} requires either {1} or {2} to also be specified.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Exception message to indicate a command argument is required with another argument. {0} - first argument, {1} - second argument, {2} - third argument.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandLineUsage_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Usage: {0} {1} [options]5D;]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown to describe command line usage]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CommandlineOptionsFocusedUiHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Opens the installer in a focused installation mode]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the FocusedUi option for all operations]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ContinueButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Continue]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a button to continue the operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CurrentVersion" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Current version:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Current version label]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";CurrentVersionText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Current version: {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for the current version of the product. {0} - The version]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Czech" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Czech]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Czech]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DefaultSelectionBannerHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Need help choosing what to install?]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for new user's choosing what to install.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DefaultSurveyCancelButton" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Not now]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Default button to not take the survey]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DefaultSurveyMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[We'd like to ask you a few questions about your Visual Studio experience. The survey will open in your default web browser.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Default message for the survey dialog]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DefaultSurveyOkButton" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Take survey]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Default button to take the survey]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DefaultSurveyTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Tell us more]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Default title for the survey dialog]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DefaultWhatsNewDetails" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[A cumulative update with new features, updated components, and servicing fixes issued.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The default text to shown in what's new section of update main page.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DeveloperFeedFailedToDownloadText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[We are unable to download the content due to network issues.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when the developer feed fails to load. Shown with retry button]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DeveloperFeedLoadingText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Updating the news channel...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when the developer news is downloading]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DeveloperNewsLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Developer News]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for develop news on full window main page]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DisableSurveysCheckboxLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Don't show this message again]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the checkbox to never show another survey]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadAllThenInstallLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Download all, then install]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for an installation option, download all, then install]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadCacheLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Download cache]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for download cache location shown on advanced settings page.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Download]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the download progress bar]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadRate_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[( {0}/sec )]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the current speed of downloads. e.g. 100MB/sec]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadSize" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Download size:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Download size label]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadSizeWithoutColon" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Download size]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The text to display the download size for an operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadStatusText_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Downloading and verifying: {0} of {1}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a progress bar while downloading and verifying packages, giving the size downloaded out of the total]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadTheLatestVersion" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Download the latest version]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Link text that will bring the user to the latest version in their web browser]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadThenInstallText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The installation will start after all your packages have been downloaded.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text to display when downloading before installing]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadThenUpdate" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Download, then update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to start a download then update operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Downloaded" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Downloaded]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when downloads have completed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";DownloadsStopped" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Downloads stopped]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when pausing and downloads have stopped]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";English" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[English]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for English]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Error" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Error]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title shown on the error dialog]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_-2146233033_Message" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Error &ndash;2146233033&colon; Package is corrupted**\r\nThe Visual Studio installer found a corrupted package. A package usually gets partially saved if the system was interrupted while downloading and writing the package to the disk.\r\n\r\n**Fix**&colon; This issue usually resolves by running a repair.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Trouble shooting message with markdown.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_-2147024891_AppliesTo" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Win10SDK_Hidden_10.0.10240_2,Win10SDK_10.0.10586.212,Win10SDK_10.0.14393.795,Win10SDK_10.0.15063,Win10SDK_10.0.16299,Win10SDK_10.0.17134",Win10SDK_10.0.17763,Win10SDK_IpOverUsb,Win10_Emulator_10.0.14393.0,Win10_Emulator_10.0.15063,Win10_Emulator_10.0.15254]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Not Localized: Packages this error code applies to]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_-2147024891_Message" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Error -2147024891&colon; Access is denied**\r\nThere is a problem accessing the registry or file system of this machine. This can happen if Windows Defender or other anti-virus software is restricting access. \n \r\n\r\n**FIX**&colon; Please review your anti-virus settings and ensure the Visual Studio Installer has unrestricted access to the registry and file system.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Trouble shooting message with markdown.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_0x80072ee7_Message" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Error 0x80072ee7&colon; No internet connection**\r\nThere is a problem connecting to our content delivery network servers. This might be a temporary server outage, or it could be an issue with your internet connection.\r\n\r\n**Fix**&colon; First, select View Logs and try to go to the URL in the report. If you can, try installing Visual Studio again. If you can not access the URL in the View Logs report, or if you are on an unreliable network, please try our recommended steps to [install Visual Studio 2017 on low&ndash;bandwidth or unreliable network environments]5D;(https://docs.microsoft.com/en-us/visualstudio/install/install-vs-inconsistent-quality-network).]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Trouble shooting message with markdown.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_0x80072efd_AppliesTo" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Cocos2DV1]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Not Localized: Packages this error code applies to]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_0x80072efd_AppliesTo_1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[AntV1]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Not Localized: Packages this error code applies to]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_0x80072efd_Message" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Error Code 0x80072efd&colon; Cocos <br>may not be available to you based on your current connection**\r\n\r\n**Fix**&colon; If you’ve experienced this error, please visit [their website]5D;(https://cocos2d-x.org/download) and attempt to download and install the component from there. Afterwards, you can install by clicking \"Modify\" and then \"Install\". If you are still unable to acquire the component, please disable Cocos to address this warning in the installation.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Trouble shooting message with markdown.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_0x80072efd_Message_1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Error Code 0x80072efd&colon; Ant may not be available to you based on your current connection**\r\n\r\n**Fix**&colon; If you’ve experienced this error, please visit [their website]5D;(https://ant.apache.org/bindownload.cgi) and attempt to download the component from there. If you are still unable to acquire the component, please disable Apache Ant to address this warning in the installation.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Trouble shooting message with markdown.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_0x80096004_Message" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Error 0x80096004&colon; Signature can't be verified**\r\nThere is a problem verifying the signature of a certificate. This usually happens when a package has been damaged.\r\n\r\n**FIX**&colon; First, select View Logs to get the name of the damaged package. In File Explorer, delete that package from the ProgramData\\Microsoft\\VisualStudio\\Packages folder and try installing Visual Studio again. If you are installing from a local or network layout, try following the recommended steps to [update a network&ndash;based installation of Visual Studio.]5D;(https://docs.microsoft.com/en-us/visualstudio/install/update-a-network-installation-of-visual-studio)]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Trouble shooting message with markdown.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_1313_Message" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Error 1303&colon; Access is denied**\r\nThere is a problem accessing a file or folder. This can happen if another process has locked a folder. \n \r\n\r\n**FIX**&colon; Rebooting and running a repair has helped unblock other users.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Trouble shooting message with markdown.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_1601_Message" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Error 1601&colon; Windows Installer Service unavailable**\r\nThere is a problem with the Windows Installer Service, or it has been turned off.\r\n\r\n**Fix**&colon; This problem usually resolves when you retry the Visual Studio installation after one of the following workarounds.\r\n1. Restart your computer. \r\n2. Make sure Windows Installer Service is turned on. Run Services.msc and double-click on Windows Installer. If it has turned off, change Status to Manual, then select Apply and OK. If it is already running, select Stop and then Start. \r\n3. If you are still getting this problem, try the [recommended Windows Installer service troubleshooting steps]5D;(https://support.microsoft.com/en-us/help/17588/fix-problems-that-block-programs-from-being-installed-or-removed).]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Trouble shooting message with markdown.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_1618_Message" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Error 1618&colon; Another installation in progress**\r\nAnother program is using the Windows Installer Service. This might be due to an automatic update.\r\n\r\n**Fix**&colon; If Windows is installing updates, we recommend that you wait until the update is complete. If an installation did not close properly, select the Processes tab in Task Manager to locate and stop any MSIExec.exe entries. You can also restart your computer and try installing again.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Trouble shooting message with markdown.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorCode_1714_Message" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Error Code 1714&colon; Cannot uninstall older version of an MSI**\r\nAn older version of an MSI is on your computer. You will need to uninstall it before you can install Visual Studio.\r\n\r\n**Fix**&colon; Please try the recommended steps to [troubleshoot MSI errors 1714 and 1612]5D;(https://aka.ms/VSMSIError)]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Trouble shooting message with markdown.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorDetailsTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Sorry, something went wrong]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown at the top of the error details page.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorListName" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Error List]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the error list.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorMessageName" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Error Message]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the error message.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Export" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Export]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to export an installation configuration file.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportConfigurationButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Export configuration]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text for the export configuration button on a product]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportConfigurationDialogBody" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You can keep workloads and components consistent by exporting an installation configuration.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for the dialog to pick a location to export an installation configuration.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportConfigurationDialogTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Export installation configuration]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title for a dialog to export an installation configuration]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportDetailsTitle_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Exporting — {0} — {1}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title for the details dialog outlining what will be exported.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportDirectoryPickerLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Export l_ocation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The label for the input box to select the location to export the installation configuration.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportFailedMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[There was a problem exporting your installation configuration file.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message for error dialog when we fail to save the installation configuration.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportFailedTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Unable to export]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title for error dialog when we fail to save the installation configuration]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportOptionsChannelIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the channel containing the product to export the installation configuration for.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the export channelId option.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportOptionsConfigHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to save the installation configuration file.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the export config option.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportOptionsInstallPathHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to the installation to use for exporting an installation configuration file.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the export install path option.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportOptionsProductIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the product to export the installation configuration for.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the export productId option.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportSuccessDialogMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The installation configuration was succesfully exported.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The message shown when an installation configuration is successfully saved.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ExportVerbHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Exports an installation configuration file.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the export verb]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";FileNotFound_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[File {0} does not exist.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when file not found.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";FileReadErrorTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[We can't open your file]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title for the error dialog when a file read fails]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";FinalErrorMessagePrefix" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Error]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title prefix for final error page exception errors.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";FixProblemLink" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[How do I fix this problem?]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for a hyperlink to show a user how to fix a problem.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";FocusedAlreadyInstalledText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You already have the frameworks, SDKs, and tools installed that you need for the development work you selected. You can always add more by running 'Visual Studio Installer'.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown to the user when they have chosen nothing new to install in the focused UI]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";FocusedUiListLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[We'll install the frameworks, SDKs, and tools that you'll need. You can add more later using the Visual Studio Installer.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a list of components/workloads to install]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";French" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[French]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for French]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";GenericErrorMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The installer encountered an error. Select the provide feedback link to get support.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Generic installer error message.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";GenericInstallOperationFailedMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The install operation failed.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Generic message shown when an install operation fails.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";GenericPackageFailureText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Couldn't process {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Generic text shown when a package failure is hit.]D;]A;{0} - The ID of the package that failed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";GenericPackageId" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Visual Studio Installer]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Generic package Id for installer exception messages]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";GenericTelemetryErrorDetails" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[An issue occured getting the error details.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Generic telemetry error message when getting error details.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";German" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[German]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for German]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";GetTroubleshootingTipsLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Get troubleshooting tips]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for getting troubleshooting tips for a failure]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";GetTroubleshootingTipsText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[More troubleshooting tips]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for the link to get more troubleshooting tips]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";GettingThingsReady" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Getting things ready ...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Loading text shown while getting the installer ready]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextBadFormatConversionError_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Option '{0}' is defined with a bad format.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for BadFormatConversionError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextBadFormatConversionError_Default" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[A value not bound to option name is defined with a bad format.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for default BadFormatConversionError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextBadFormatTokenError_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Token '{0}' is not recognized.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for BadFormatTokenError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextBadVerbSelectedError_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Verb '{0}' is not recognized.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for BadVerbSelectedError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextDefaultError" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Unknown error. Please check your parameters and try again.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when there is no error match in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextInstall" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installs a product]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for install command]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextLaunch" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Launches the product]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText for the launch control.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextMissingRequiredOptionError_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Required option '{0}' is missing.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for MissingRequiredOptionError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextMissingRequiredOptionError_Default" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[A required value not bound to option name is missing.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for default MissingRequiredOptionError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextMissingValueOptionError_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Option '{0}' has no value.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for MissingValueOptionError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextModify" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Modifies an existing installation, adding and removing components]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for modify command]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextNoVerbSelectedError" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[No verb selected.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for NoVerbSelectedError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextRepair" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Repairs an installation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for repair command]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextRepeatedOptionError_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Option '{0}' is defined multiple times.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for RepeatedOptionError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextResume" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Resume the installation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for resume command]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextSequenceOutOfRangeError_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[A sequence option '{0}' is defined with fewer or more items than required.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for SequenceOutOfRangeError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextSequenceOutOfRangeError_Default" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[A sequence value not bound to option name is defined with few items than required.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for default SequenceOutOfRangeError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextUninstall" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Uninstalls an installation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for uninstall command]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextUnknownOptionError_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Option '{0}' is unknown.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for UnknownOptionError in HelpText library]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";HelpTextUpdate" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Updates an installation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for update command]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ImportConfigurationButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Import configuration]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text for the import configuration button on a product]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ImportConfigurationDialogBody" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You can keep workloads and components consistent by importing an installation configuration.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for the dialog to pick a location to import an installation configuration.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ImportConfigurationDialogTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Import installation configuration]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title for a dialog to import an installation configuration]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ImportConfigurationSuccessText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The installation configuration was successfully imported.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The text shown on the summary pane of review details page when the installation configuration is successfully imported.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ImportDirectoryPickerLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Import l_ocation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The label for the input box to select the location to import the installation configuration.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";IncompleteInstallRebootMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[A machine restart is required. If needed, any remaining setup will resume automatically after the reboot.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message shown when an install is incomplete and a reboot is required before continuing.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";IndividualComponentsLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Individual components]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a list of components to install]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Install" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Install]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button label for installing a product]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallDetailsPageTitleLabel_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installing — {0} — {1}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the install details page's title]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Install]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the install progress bar]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallLocationInfoTip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This location is for files that are specific to this]D;]A;version of Visual Studio. If you have a solid-state]D;]A;system drive, we recommend that you accept the]D;]A;default location to run Visual Studio faster.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown as information tip for install location in advanced settings page.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallOptionsCloneHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The install path of an installed product to clone]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Clone option in InstallOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallOptionsFlightHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The flights to enable, along with their duration e.g. flight1;7d]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Flight option in InstallOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallOptionsInstallCatalogUriHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The URI or path to the catalog to use for the installation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the InstallCatalogUri option in InstallOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallOptionsInstallPathHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path where the product should be installed]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the InstallPath option in InstallOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallOptionsLayoutPathHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to the layout to use for installation packages]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the LayoutPath option in InstallOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallOptionsNicknameHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The nickname to give the installation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Nickname option in InstallOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallPathCannotBeEmpty" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The installation path cannot be empty.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error message string for an empty installation path]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallStatusText_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installing: package {0} of {1}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the number of packages installed out of the total. e.g. Installing: package 10 of 100]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallUpdateResumeOptionsProductKeyHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The license product key for the product. Composed of 25 alphanumeric characters either in the format 'xxxxx-xxxxx-xxxxx-xxxxx-xxxxx' or 'xxxxxxxxxxxxxxxxxxxxxxxxx']]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the ProductKey option in UpdateOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallWhileDownloadingLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Install while downloading]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for an installation option, install while downloading]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallationConfigurationIOErrorMessage_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[There was a problem opening {0}. Make sure that it exists and that you have permissions to open it.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message for the error dialog when an installation configuration fails to open. {0} - The path to the file.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallationConfigurationWillOverwriteWarning" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[A configuration file already exists and will be overwritten.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Warning message displayed when an installation configuration file will overwrite an existing one.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallationDetailsLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installation details]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label shown on the installation details tab as a title]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallationLocationsLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installation locations]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for installation locations for the product]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallationNickname" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installation nickname]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for installation nick name text box]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstalledHeader" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installed]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The tab header on main page for installed product card]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerDownloadFailedMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The Visual Studio Installer update failed to download. Make sure that you are connected to the network and try again.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message shown when the installer update fails to download.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseActivateOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Whether the window should be activated when created]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Activate option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseActivityIdOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the related process that started the installer]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the ActivityId option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseCacheOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Specifies that payloads should be cached on the system]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Cache option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseCampaignOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID for campaign tracking]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Campaign option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseChannelIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the channel containing the product to install]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the channel ID install command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseContinueHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Launch after the engine has been updated]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Continue option in UpdateOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseDevenvLaunchArgumentsOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The arguments to pass on to devenv]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the DevenvLaunchArguments option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseForceOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Forces any running, blocking exes to shutdown before starting the operation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Force option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseInOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to the response file to use for the operation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the In option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseInstallSessionIdOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID from a previous installation session to use for this session]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the InstallSessionId option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseInstallerFlightOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Flights to enable for the installer, along with their duration e.g. flight1;7d]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the InstallerFlight option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseLocaleOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Sets the UI locale]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Locale option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseNoCacheOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Specifies that payloads should be deleted from the system]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the NoCache option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseNoRestartOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Prevents a quiet/passive operation from rebooting automatically, if required]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the NoRestart option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseNoUpdateInstallerOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Prevents the installer from automatically updating if an update is required]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the NoUpdateInstaller option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseNoWebOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Prevents the installer from downloading any payloads]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the NoWeb option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseParentOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The parent window handle]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Parent option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBasePassiveOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The command executes immediately without user interaction, showing UI]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Passive option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBasePipeNameOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The pipe from the starting exe that will be connected on startup]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the PipeName option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBasePositionOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The left,top coordinates on which to center the window e.g. 1280,720]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Position option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseProductIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the product to install]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the product ID install command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseQuietOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The command executes immediately without user interaction, without creating UI]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Quiet option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseSessionThemeOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Changes the color theme of the installer for just this process lifetime]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the commandline option to change session themes]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerOptionsBaseThemeOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Changes the color theme of the installer]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the commandline option to change themes]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Visual Studio Installer]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The title of the Visual Studio installer.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerUpdateCompleted" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Updated Visual Studio Installer]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when operation completed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerUpdateFailed" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[There was a problem updating the installer. Please close Visual Studio Installer and try again.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when installer update failed.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerUpdateProgressBarName" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installer update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Name for the installer update progress bar]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallerUpdateRequired" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Please update Visual Studio Installer before proceeding.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error message when a VS Installer update is required before continuing.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallingThisMightTakeAWhile" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installing... This might take a while.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[String shown to users at the end of install]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InvalidFlights_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Invalid format for flight(s): {0}. The format should be Name;Duration[d/m/w/h]5D;. Example: flight1;7d]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error shown when the list of flights is in an invalid format]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InvalidJsonErrorMessage_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[There was a problem opening {0}. It's not a valid json file.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message for the error dialog when an installation configuration fails to parse. {0} - The path to the file.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InvalidNickname" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The nickname cannot contain characters that cannot appear in a file name]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Indicates that the user's selected nickname has invalid characters]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InvalidParentFormat_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The parent "{0}" is invalid. Expected parent using a format where the value is a whole integer.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message to show for invalid Parent format. {0} is the value specified.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InvalidPaths_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Invalid format for customized path {0}. Expected format is pathKey=pathValue.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[General error message for invalid customized path format.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InvalidPositionFormat_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The position "{0}" is invalid. Expected position using a format like "left,top" where "left" and "top" are both whole integers.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message to show for invalid Position format. {0} is the value specified.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InvalidSelectedPackages_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Invalid format for selected packages {0}. Expected format is packageId;SelectedState;UserSelectedState.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error text displayed when invalid selected packages are passed on the command line.]D;]A;{0} - The input packages.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Italian" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Italian]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Italian]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Japanese" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Japanese]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Japanese]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";KeepDownloadCacheLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Keep download cache after the installation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Checkbox lable for selectting keep package cache]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Korean" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Korean]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Korean]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";LanguagePacksInstructionLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You can add additional language packs to your Visual Studio installation.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the instruction to add additional language packs]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";LanguagePacksLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Language packs]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for language packs to install]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";LastUpdated" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Last updated:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Last updated label]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Launch" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Launch]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to launch a product.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";LicenseTerms" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[License terms]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for license terms]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";LicenseText_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[By continuing, you agree to the !$!{0}!,!license!,!license!@! for the Visual Studio edition you selected. We also offer the ability to download other software with Visual Studio. This software is licensed separately, as set out in the !$!{1}!,!3rd Party Notices!,!3rdPartyNotice!@! or in its accompanying license. By continuing, you also agree to those licenses.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[License text, containing links, shown before the user installs. {0} - URL for the license. {1} - URL for the third party notices.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";LoadingCompleted" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Loading completed]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Inform user loading is completed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";LocationLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Location]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for an installation location]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";MaximizeToolTip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Maximize]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tool tip for the window maximize button]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";MessageBusErrorTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Error]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title of the error dialog shown when an install fails]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";MessageBusMidDownloadWarningTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[An installation file didn't download]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title of the error dialog shown during an installation when a file fails to download]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";MessageBusMidInstallWarningTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installation couldn't continue]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title of the error dialog shown during an installation when the install cannot continue]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";MessageBusPreCheckTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Before we get started]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title of the error dialog shown before an install starts]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";MinimizeToolTip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Minimize]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tool tip for the window minimize button]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Modify" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Modify]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to start an modify operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ModifyDetailsPageTitleLabel_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Modifying — {0} — {1}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the modify details page's title]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ModifyOptionsChannelIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the channel containing the product to modify]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the channel ID modify command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ModifyOptionsInstallPathHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to the installation to modify]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the install path modify command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ModifyOptionsProductIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the product to modify]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the product ID modify command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";MoreButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[More]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text for a button with a dropdown menu]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";MoreInfoText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[More info]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Link text for getting more information.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NeedSomeHelpText_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Need help? Check out the !$!{0}!,!Microsoft Developer Community!,!MicrosoftDeveloperCommunity!@! or reach us via !$!{1}!,!Visual Studio Support!,!VisualStudioSupport!@!.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Section to help users through the community and support links. {0} - URL for the Microsoft Developer Community. {1} - URL for the Visual Studio Support.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NicknameNotUnique_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The nickname "{0}" is not unique]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Indicates that the user's selected nickname isn't unique]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NicknameRequired" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[A nickname must be provided to disambiguate this install]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Indicates that the user must supply a nickname]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NicknameTooLong_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The nickname cannot be longer than {0} characters]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Indicates that the nickname for an installed product is too long]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NoInstalledProductFoundMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[An installed product matching the following parameters cannot be found:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error message shown to the user when the command line product cannot be found]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NoLanguageSelectedErrorMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Select a language pack to continue the installation.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error shown when the user deselects all languages.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NoProductFoundMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[A product matching the following parameters cannot be found:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error message shown to the user when the command line product cannot be found]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NoProductFoundToCloneErrorMessage_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[There is no installation at '{0}']]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error message when the product to clone isn't found.]D;]A;{0} - the installation path of the product]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NoProductsInstalledText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You haven't installed anything yet.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when the user has not installed any products yet]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NoUpdate" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Visual Studio is up to date.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown indicates there is no update]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NoUpdateFoundErrorMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[There is no update available.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Start of message shown when there is no update available to a product but the update command is passed on the command line.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NotEnoughSpaceWarning" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You might not have enough space on drive {0}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Warning shown when the user may not have enough space to install. {0} - The drive without enough space.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";NotNow" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Not now]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to cancel the required reboot]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OkButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_OK]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a button to accept an error]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OneInstance" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Cannot start another instance of the installer while this instance is running.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Show the message when user try to start another instance of the installer]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OpenFileTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Open File]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title used for a dialog when opening a file or a folder]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OpenFolderLinkText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Open Folder in File Explorer]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for a link to open the file explorer to the folder a file was saved in.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OperationCanceledText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The installation was cancelled.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown in final page when setup has been cancelled.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OperationCompletedText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The installation has completed.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message shown when an install operation completes]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OperationFailedMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The operation did not complete sucessfully]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Generic error message when an install operation fails]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OperationFailedMessage_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The operation did not complete sucessfully: {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Generic error message with extra diagnostic information]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OperationModePickerLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installation mode]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a picker to change the mode of the installation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OperationModePickerToolTip_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[If you have a slower internet connection, select "{0}". The installation will start after all of your packages have been downloaded.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tool tip for the picker to pick the installation mode]D;]A;{0} - The mode to download all packages before starting the install]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OptionValueMessage_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[{0}: {1}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message to show an option with its value]D;]A;{0} - The option name e.g. installPath]D;]A;{1} - The option value]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OptionalComponentsSummaryPaneTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Optional]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title for the section of components recommended/optional by the workload in the summary pane]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";OtherDriveSpaceRequired" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Other drives]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The text to display the other drives space required for an operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PackageCacheFailureText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Couldn't cache {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when a package fails to be written to the cache]D;]A;{0} - The ID of the package that failed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PackageCacheInfoTip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Visual Studio uses this location to download installation]D;]A;files. You can choose not to keep the download cache after]D;]A;installation, but you'll have to download these files again]D;]A;if you update, modify, or uninstall the product. This location]D;]A;can only be set the first time Visual Studio is installed.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown as information tip for package download cache location in advanced settings page.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PackageDownloadFailureText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Couldn't download {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when a package fails to download]D;]A;{0} - The ID of the package that failed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PackageErrorMessageName" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Package Error Message]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the problem message]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PackageFailureReproText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[**Describe your issue here**  \n  \n  \n===DO NOT EDIT BELOW THIS LINE===  \n{0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for a new package failure issue. Indicates where to describe the issue and what shouldn't be edited. Contains Markdown symbols]D;]A;{0} - The specific text to identify the issue that should not be edited]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PackageInstallFailureText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Couldn't install {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when a package fails to install]D;]A;{0} - The ID of the package that failed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PackageRepairFailureText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Couldn't repair {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when a package fails to repair]D;]A;{0} - The ID of the package that failed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PackageSelectionFailureDialogTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The following IDs could not be installed...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title for a dialog to show when there is a failure to add or remove packages]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PackageSelectionFailureText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[No matching workload or component found.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for each workload or component when adding or removing packages fail]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PackageUninstallFailureText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Couldn't uninstall {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when a package fails to uninstall]D;]A;{0} - The ID of the package that failed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PathMustBeUnique_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path '{0}' was provided more than once.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error message shown when the user provides the same path name multiple times on the cmdline]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Pause" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Pause]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button to pause an operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PauseMayTakeAwhile" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This might take a few minutes to finish.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown after pausing to let the user know it may take some time]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PausedProductCommandLineBlockerMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You already have an operation in progress. Complete that operation and try again.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error message shown when a product is paused and a command line operation cannot be run.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PercentDownloaded_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[{0}% downloaded]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown to indicate percentage downloaded.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PercentText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[{0}%]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for percentage displayed next to a progress bar]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Polish" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Polish]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Polish]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";PreviouslyCanceled" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You already have an operation in progress. To resume, please launch Visual Studio Installer.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when the instance has been previously canceled during an operation.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ProblemListName" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Problem List]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the problem list.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ProductAlreadyInstalledErrorText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[{0} is already installed.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Error text when install verb is passed and the product is already installed]D;]A;{0} - The name of the product installed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Progress" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Progress:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Progress label]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ProgressNotStarted" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Not started]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown to indicate the background download for update haven't started.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ProvideASuggestion" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Provide a suggestion]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for a drop down menu to provide a suggestion]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ProvideFeedback" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Provide feedback]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tooltip for the button to provide feedback]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ReadyToInstall" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Ready to install]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown in update page when there is an update and the update has been fully background downloaded.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RebootRequiredProductDescription" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[A restart is required. If needed, any remaining setup will resume automatically after the restart.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Description shown under a product when a machine restart is required before using.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RebootRequiredTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Reboot required]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title for a dialog warning the user they need to reboot]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RecommendWorkloadSelectionLinkText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Learn more about workloads and components]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Link text to learn more on workloads and components.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RecommendWorkloadSelectionMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The core Visual Studio editor can open folders, edit files, and manage work items. Visual Studio needs to install additional components to create, open, and debug projects for desktop, mobile, and cloud apps.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[A message that the user has not selected any workloads.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RecommendWorkloadSelectionTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Do you want to continue without workloads?]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title of dialog that the user has not selected any workloads.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ReleaseNotes" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Release notes]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Release notes label]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ReleaseNotesText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Find out what's new in this update. Check out the !$!{0}!,!release notes!,!ProgressReleaseNotesLink!@!.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The rich text to shown for release notes in progress page.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Remove ComponentsDescriptionBottom" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[If you continue, we'll remove the component and any items listed above that depend on it.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Bottom text for removing components dialog]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RemoveButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Remove]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for a remove button]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RemoveChannelErrorMessage_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[There was a problem removing the {0} channel.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message of error shown when we fail to remove a channel]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RemoveChannelErrorTitle_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Failed to remove {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title of error shown when we fail to remove a channel]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RemoveChannelPrompt_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You are removing {0}. You won't see this section anymore.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message for the channel remove confirmation prompt.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RemoveChannelWarningMessage_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[To remove {0}, you'll first need to uninstall the following:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Warning message when trying to remove a channel with installed products]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RemoveChannel_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Remove {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tool tip for removing channel. {0} - the channel suffix]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RemoveComponentsDescriptionTop" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[It looks like you're trying to remove a component that's required by the following:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Top text for removing components dialog]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RemoveComponentsDialogTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Removing components]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Shows the title text for removing components]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RemoveTheseVersions" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Remove these versions]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Link text, as in remove these products from the UI]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RemovedPackage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Removed {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text read to the user when using a screen reader and a package is removed from the install list]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Repair" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Repair]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to start a repair operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RepairOptionsChannelIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the channel containing the product to repair]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the channel ID repair command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RepairOptionsInstallPathHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to the installation to repair]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the install path repair command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RepairOptionsProductIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the product to repair]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the product ID repair command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RepairWarningMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Repairing Visual Studio will reset the environment. Local customizations like per-user extensions and your user settings will be removed. Your synchronized settings will be restored.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message of error dialog when the user chooses to repair a product.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RepairWarningTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Repair Visual Studio]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title of error dialog when the user chooses to repair a product.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ReportAProblem" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Report a problem]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for a drop down menu to report a problem]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ReportProblemLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Report Problem]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a link to report a problem]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ReportThisProblemLinkText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Report this problem]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Link text for a package failure without solutions to report the issue.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RequiredComponentsSummaryPaneTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Included]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title for the section of components required by the workload in the summary pane]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Restart" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Restart]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to restart the computer]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RestoreToolTip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Restore]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tool tip for the window restore button]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Resume" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[R_esume]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for a button that will resume a paused install]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ResumeOptionsInstallPathHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to the installation to resume]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the install path resume command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ResumeOptionsRunOnceOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Passed by Windows when restarting the application after shutdown]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the RunOnce option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RetiredChannelDescription_Plural" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The following product versions are no longer supported:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown below a channel letting the user know the following products are not supported]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RetiredChannelDescription_Single" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The following product version is no longer supported:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown below a channel letting the user know the following product is not supported]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RetiredChannelWarningMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This product version is no longer supported.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message below a product to warn that the channel is retired]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RetiredChannelWarningMessageForFocusedUi" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This product version is no longer supported. To add tools and features, please upgrade to the latest version of Visual Studio.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message shown on the details page preventing the user from continuing.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RetiredChannelWarningMessageForLayoutInstallation" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This product version is no longer supported and setup might not work as expected.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message shown when the user has an installation from a layout from a channel that is retired]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Retry" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Retry]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to start a retry operation on a setup-failed product]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";RetryButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Retry]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a button to retry an operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ReviewDetailsButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Review details]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to review installation configuration details before exporting/importing]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Russian" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Russian]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Russian]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SearchComponentsLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Search components (Ctrl+Q)]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the preview text in the search components textbox]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SeePopularSolutionsLinkText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[See popular solutions]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Link text for a pacakge failure with solutions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SeeVerifiedSolutionLinkText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[See verified solution]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Link text for a package failure with a verified solution]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectFromAvailableLinkText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Select from {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Link text to select products from the Available tab.]D;]A;{0} - The localized text for the tab with available products]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectInstanceOptionsPathHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Sets the custom path using a key=value pair e.g. --path cache=C:\\cachePath]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Path option in InstallOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectionOptionsAddHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The component or workload ID to add]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Add option in SelectionOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectionOptionsAddProductLangHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Adds a product language to install]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the AddProductLang option in SelectionOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectionOptionsAllHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Adds all workloads and components]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the All option in SelectionOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectionOptionsAllWorkloadsHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Adds all workloads]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the AllWorkloads option in SelectionOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectionOptionsConfigHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to a configuration file to use for selection]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Config option in SelectionOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectionOptionsIncludeOptionalHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Includes all optional components for workloads added]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the IncludeOptional option in SelectionOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectionOptionsIncludeRecommendedHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Includes all recommended components for workloads added]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the IncludeRecommended option in SelectionOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectionOptionsRemoveHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The component or workload ID to remove]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Remove option in SelectionOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectionOptionsRemoveProductLangHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Removes a product language]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the RemoveProductLang option in SelectionOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SelectionOptionsVsixHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The URI or path to additional vsixs to install]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Vsix option in SelectionOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SetupCompletedWithWarnings" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Setup completed with warnings]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a description when a product is in a warning state]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SetupFailed" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Setup failed]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text that gets shown on the first line for the product that failed setup.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SetupPaused" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Setup paused]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text that indicates previous setup operation has been paused]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SetupPausedWithPeriod" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Setup paused.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text that indicates previous setup operation has been paused]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SharedInstallationInfoTip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This location contains shared files for side-by-side]D;]A;Visual Studio installations. Some tools and SDKs install]D;]A;to a location on this drive, while some others might]D;]A;override this setting and install to another drive.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown as information tip for shared installation location in advanced settings page.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SharedLocationLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Shared components, tools, and SDKs]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for shared installation location shown on advanced settings page.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SimplifiedChinese" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Chinese (Simplified)]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Simplified Chinese]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SomethingWentWrongTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Sorry, something went wrong]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Generic title for the error dialog when something goes wrong.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SomethingWentWrongWithPeriod" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Sorry, something went wrong.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Generic text shown on the error dialog]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Spanish" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Spanish]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Spanish]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";StartAfterInstallationLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Start after installation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a checkbox to start the installed product after installation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";StartingDownloadOperationText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Starting download operation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the second progress bar when the operation is starting before the progress changes]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";StartingInstallOperationText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Starting install operation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the third progress bar when the operation is starting before the progress changes]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";StartingOperationText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Starting operation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the a progress bar when the operation is starting]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";StartingUpdateOperationText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Starting update operation]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the first progress bar when the operation is starting before the progress changes]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SuccessWithRebootMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Success! One more step to go. Please restart your computer before you start Visual Studio.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Status text shown when an install completes requiring a reboot.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SwitchToDarkThemeToolTip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Switch to Dark mode]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tooltip shown for the theme toggle button to switch to dark theme (mode).]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SwitchToLightThemeToolTip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Switch to Light mode]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tooltip shown for the theme toggle button to switch to light theme (mode).]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SystemCacheInstallSizeLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[System cache, tools, and SDKs with fixed locations]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label describing the install size for the system cache]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SystemDriveSpaceRequired_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[System drive ({0})]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The text to display the system drive space required for an operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SystemRequirements" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[System requirements]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The label for system requirements link in not applicable product card]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ThereWasAProblem" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[There was a problem.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown in the product description if the installation had a problem.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ToggleThemeLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Switch theme]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for the toggle theme button]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";TotalSpaceRequired" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Total space required]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The text to display the total space required for an operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";TotalSpaceRequired_Arg1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Total space required {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The text to display the total space required for an operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";TraditionalChinese" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Chinese (Traditional)]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Traditional Chinese]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";TryAgainButtonText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Try again]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to try an operation again]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Turkish" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Turkish]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Display name in a list of languages for Turkish]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Unavailable" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Unavailable]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for something that is not available for installation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Uncategorized" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Uncategorized]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a list of packages without a category]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Uninstall" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Uninstall]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to start an uninstall operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UninstallInstallerPrompt" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Remove Visual Studio Installer and associated installations of Visual Studio?]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Prompt message to uninstall the installer.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UninstallOptionsChannelIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the channel containing the product to uninstall]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the channel ID uninstall command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UninstallOptionsInstallPathHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to the installation to uninstall]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the install path uninstall command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UninstallOptionsProductIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the product to uninstall]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the product ID uninstall command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UninstallWarningMessage" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You are about to uninstall the following product:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message of error dialog shown when uninstalling a product]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UninstallWarningTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Uninstall Visual Studio]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Title of error dialog shown when uninstalling Visual Studio]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UninstallingThisMightTakeAWhile" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Uninstalling... This might take a while.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[String shown to users at the end of uninstall]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UnsupportedCommandForRetiredChannel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This product version is no longer supported. Please upgrade to the latest version of Visual Studio.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Message shown when the user tries to run an unsupported command on a retired channel]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpToDate" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Up to date]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on the main page when no product has an update.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Update" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_Update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Button text to start an update operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateAvailable" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Update available]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown indicates there is an update]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsAddHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The advertised component or workload ID to add]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the Add option in UpdateOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsChannelIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the channel containing the product to update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the channel ID update command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsForceUpdateHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Updates Visual Studio even when no component will be updated.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the ForceUpdate option in UpdateOperation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsInstallCatalogUriHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The URI or path to the catalog to use for the update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the InstallCatalogUri option in UpdateOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsInstallChannelUriHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The URI or path to the channel manifest to use for the update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the InstallChannelUri option in UpdateOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsInstallLayoutPathHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to the layout to use for installation packages for the update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the InstallLayoutPath option in UpdateOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsInstallPathHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The path to the installation to update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the install path update command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsPreviewUpdateHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Shows information about the update before starting]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the PreviewUpdate option in UpdateOptions]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsProductIdHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The ID of the product to update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the product ID update command line option]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsUpdateFromVSOptionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Indicates that the update is started from within Visual Studio]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[HelpText of the UpdateFromVS option in InstallerOptionBase]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateOptionsUpdateVersionHelpText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The version of the update to apply]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Help text for the update version expected to be applied with the update verb]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateVersion" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Update version:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Update version label]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdateVersionText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Update version: {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for the update version of the product. {0} - The version]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdatesAvailable" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Updates available]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on the main page if any installed product has an update]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Updating" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This might take a few minutes...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when updating a product]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdatingInstaller" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Updating Visual Studio Installer]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when self update is installing newer installer]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdatingInstallerStopped" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Updating Visual Studio Installer stopped]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when self update is stopped]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UpdatingInstaller_Args2" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Updating Visual Studio Installer: {0} of {1}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown when self update is downloading newer installer]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ViewDetails" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[View details]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for a link to view installation details from a smaller UI]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ViewFullDetails" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[_View full installation details]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text for a link to view full installation details from a smaller UI]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ViewLogsLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[View Logs]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a link to view logs]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ViewLogsLargeLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Open the log to find the problems.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a large link to view logs]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ViewMoreOnline" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[View more Microsoft developer news...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Link text to see more news online]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ViewMoreOnlineTooltip" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[View more Microsoft developer news in your browser]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tooltip for users hovering over the more news link]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ViewProblems" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[View problems]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a view problems link when clicked, shows the errors/warnings the product's install state has.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";VisualStudioCloseAutomaticallyText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Visual Studio will close automatically.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Note message to the user the VS will close during the operation.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";VisualStudioCloseReopenText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Visual Studio will close and reopen.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Warning message shown to the user that VS will close and reopen]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";VisualStudioIDELabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Visual Studio IDE]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for Visual Studio IDE installation location shown on advanced settings page.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";VisualStudioTitle" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Visual Studio]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[The title of Visual Studio]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WaitingForPackage_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Waiting for {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown after pausing when the install is waiting for a package to complete. e.g. Waiting for Microsoft.Component.HelpViewer]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WaitingForSelfUpdate" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Waiting for installer update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown for product download and install progress text when waiting for installer update]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WaitingToDownload" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Waiting to download]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on the second progress bar (download) when waiting for the installer update]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WaitingToGeneric" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Waiting...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on the thired progress bar (install) when waiting for a generic operation.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WaitingToInstall" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Waiting to install]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on the thired progress bar (install) when waiting for the install operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WaitingToInstallUpdate" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Waiting to install update]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on the thired progress bar (install) when waiting for the installer update]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WaitingToModify" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Waiting to modify]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on the thired progress bar (install) when waiting for the modify operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WaitingToRepair" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Waiting to repair]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on the thired progress bar (install) when waiting for the repair operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WaitingToResume" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Waiting to resume]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on the thired progress bar (install) when waiting to resume an operation.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WaitingToUninstall" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Waiting to uninstall]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Text shown on the thired progress bar (install) when waiting for the uninstall operation]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Warning" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Warning]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a warning image]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WhatsNewDetails" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[What's New Details]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Name for what's new document used for accessibility purposes.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WhatsNewText_Args1" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[What's new in {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for showing new content in a certain product. {0} - the product that new content need to be shown]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WorkloadNotAvailableWarning" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This workload is unavailable right now.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Tool tip shown when a workload cannot be installed]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";WorkloadsLabel" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Workloads]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[Label for a list of workloads to install]]></Cmt>
+        </Cmts>
+      </Item>
+    </Item>
+  </Item>
+</LCX>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

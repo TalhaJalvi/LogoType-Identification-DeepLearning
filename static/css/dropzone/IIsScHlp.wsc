@@ -1,0 +1,818 @@
+{
+    throw new TypeError('a Comparator is required')
+  }
+
+  if (!options || typeof options !== 'object') {
+    options = {
+      loose: !!options,
+      includePrerelease: false
+    }
+  }
+
+  var rangeTmp
+
+  if (this.operator === '') {
+    rangeTmp = new Range(comp.value, options)
+    return satisfies(this.value, rangeTmp, options)
+  } else if (comp.operator === '') {
+    rangeTmp = new Range(this.value, options)
+    return satisfies(comp.semver, rangeTmp, options)
+  }
+
+  var sameDirectionIncreasing =
+    (this.operator === '>=' || this.operator === '>') &&
+    (comp.operator === '>=' || comp.operator === '>')
+  var sameDirectionDecreasing =
+    (this.operator === '<=' || this.operator === '<') &&
+    (comp.operator === '<=' || comp.operator === '<')
+  var sameSemVer = this.semver.version === comp.semver.version
+  var differentDirectionsInclusive =
+    (this.operator === '>=' || this.operator === '<=') &&
+    (comp.operator === '>=' || comp.operator === '<=')
+  var oppositeDirectionsLessThan =
+    cmp(this.semver, '<', comp.semver, options) &&
+    ((this.operator === '>=' || this.operator === '>') &&
+    (comp.operator === '<=' || comp.operator === '<'))
+  var oppositeDirectionsGreaterThan =
+    cmp(this.semver, '>', comp.semver, options) &&
+    ((this.operator === '<=' || this.operator === '<') &&
+    (comp.operator === '>=' || comp.operator === '>'))
+
+  return sameDirectionIncreasing || sameDirectionDecreasing ||
+    (sameSemVer && differentDirectionsInclusive) ||
+    oppositeDirectionsLessThan || oppositeDirectionsGreaterThan
+}
+
+exports.Range = Range
+function Range (range, options) {
+  if (!options || typeof options !== 'object') {
+    options = {
+      loose: !!options,
+      includePrerelease: false
+    }
+  }
+
+  if (range instanceof Range) {
+    if (range.loose === !!options.loose &&
+        range.includePrerelease === !!options.includePrerelease) {
+      return range
+    } else {
+      return new Range(range.raw, options)
+    }
+  }
+
+  if (range instanceof Comparator) {
+    return new Range(range.value, options)
+  }
+
+  if (!(this instanceof Range)) {
+    return new Range(range, options)
+  }
+
+  this.options = options
+  this.loose = !!options.loose
+  this.includePrerelease = !!options.includePrerelease
+
+  // First, split based on boolean or ||
+  this.raw = range
+  this.set = range.split(/\s*\|\|\s*/).map(function (range) {
+    return this.parseRange(range.trim())
+  }, this).filter(function (c) {
+    // throw out any that are not relevant for whatever reason
+    return c.length
+  })
+
+  if (!this.set.length) {
+    throw new TypeError('Invalid SemVer Range: ' + range)
+  }
+
+  this.format()
+}
+
+Range.prototype.format = function () {
+  this.range = this.set.map(function (comps) {
+    return comps.join(' ').trim()
+  }).join('||').trim()
+  return this.range
+}
+
+Range.prototype.toString = function () {
+  return this.range
+}
+
+Range.prototype.parseRange = function (range) {
+  var loose = this.options.loose
+  range = range.trim()
+  // `1.2.3 - 1.2.4` => `>=1.2.3 <=1.2.4`
+  var hr = loose ? re[HYPHENRANGELOOSE] : re[HYPHENRANGE]
+  range = range.replace(hr, hyphenReplace)
+  debug('hyphen replace', range)
+  // `> 1.2.3 < 1.2.5` => `>1.2.3 <1.2.5`
+  range = range.replace(re[COMPARATORTRIM], comparatorTrimReplace)
+  debug('comparator trim', range, re[COMPARATORTRIM])
+
+  // `~ 1.2.3` => `~1.2.3`
+  range = range.replace(re[TILDETRIM], tildeTrimReplace)
+
+  // `^ 1.2.3` => `^1.2.3`
+  range = range.replace(re[CARETTRIM], caretTrimReplace)
+
+  // normalize spaces
+  range = range.split(/\s+/).join(' ')
+
+  // At this point, the range is completely trimmed and
+  // ready to be split into comparators.
+
+  var compRe = loose ? re[COMPARATORLOOSE] : re[COMPARATOR]
+  var set = range.split(' ').map(function (comp) {
+    return parseComparator(comp, this.options)
+  }, this).join(' ').split(/\s+/)
+  if (this.options.loose) {
+    // in loose mode, throw out any that are not valid comparators
+    set = set.filter(function (comp) {
+      return !!comp.match(compRe)
+    })
+  }
+  set = set.map(function (comp) {
+    return new Comparator(comp, this.options)
+  }, this)
+
+  return set
+}
+
+Range.prototype.intersects = function (range, options) {
+  if (!(range instanceof Range)) {
+    throw new TypeError('a Range is required')
+  }
+
+  return this.set.some(function (thisComparators) {
+    return thisComparators.every(function (thisComparator) {
+      return range.set.some(function (rangeComparators) {
+        return rangeComparators.every(function (rangeComparator) {
+          return thisComparator.intersects(rangeComparator, options)
+        })
+      })
+    })
+  })
+}
+
+// Mostly just for testing and legacy API reasons
+exports.toComparators = toComparators
+function toComparators (range, options) {
+  return new Range(range, options).set.map(function (comp) {
+    return comp.map(function (c) {
+      return c.value
+    }).join(' ').trim().split(' ')
+  })
+}
+
+// comprised of xranges, tildes, stars, and gtlt's at this point.
+// already replaced the hyphen ranges
+// turn into a set of JUST comparators.
+function parseComparator (comp, options) {
+  debug('comp', comp, options)
+  comp = replaceCarets(comp, options)
+  debug('caret', comp)
+  comp = replaceTildes(comp, options)
+  debug('tildes', comp)
+  comp = replaceXRanges(comp, options)
+  debug('xrange', comp)
+  comp = replaceStars(comp, options)
+  debug('stars', comp)
+  return comp
+}
+
+function isX (id) {
+  return !id || id.toLowerCase() === 'x' || id === '*'
+}
+
+// ~, ~> --> * (any, kinda silly)
+// ~2, ~2.x, ~2.x.x, ~>2, ~>2.x ~>2.x.x --> >=2.0.0 <3.0.0
+// ~2.0, ~2.0.x, ~>2.0, ~>2.0.x --> >=2.0.0 <2.1.0
+// ~1.2, ~1.2.x, ~>1.2, ~>1.2.x --> >=1.2.0 <1.3.0
+// ~1.2.3, ~>1.2.3 --> >=1.2.3 <1.3.0
+// ~1.2.0, ~>1.2.0 --> >=1.2.0 <1.3.0
+function replaceTildes (comp, options) {
+  return comp.trim().split(/\s+/).map(function (comp) {
+    return replaceTilde(comp, options)
+  }).join(' ')
+}
+
+function replaceTilde (comp, options) {
+  var r = options.loose ? re[TILDELOOSE] : re[TILDE]
+  return comp.replace(r, function (_, M, m, p, pr) {
+    debug('tilde', comp, _, M, m, p, pr)
+    var ret
+
+    if (isX(M)) {
+      ret = ''
+    } else if (isX(m)) {
+      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0'
+    } else if (isX(p)) {
+      // ~1.2 == >=1.2.0 <1.3.0
+      ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0'
+    } else if (pr) {
+      debug('replaceTilde pr', pr)
+      ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
+            ' <' + M + '.' + (+m + 1) + '.0'
+    } else {
+      // ~1.2.3 == >=1.2.3 <1.3.0
+      ret = '>=' + M + '.' + m + '.' + p +
+            ' <' + M + '.' + (+m + 1) + '.0'
+    }
+
+    debug('tilde return', ret)
+    return ret
+  })
+}
+
+// ^ --> * (any, kinda silly)
+// ^2, ^2.x, ^2.x.x --> >=2.0.0 <3.0.0
+// ^2.0, ^2.0.x --> >=2.0.0 <3.0.0
+// ^1.2, ^1.2.x --> >=1.2.0 <2.0.0
+// ^1.2.3 --> >=1.2.3 <2.0.0
+// ^1.2.0 --> >=1.2.0 <2.0.0
+function replaceCarets (comp, options) {
+  return comp.trim().split(/\s+/).map(function (comp) {
+    return replaceCaret(comp, options)
+  }).join(' ')
+}
+
+function replaceCaret (comp, options) {
+  debug('caret', comp, options)
+  var r = options.loose ? re[CARETLOOSE] : re[CARET]
+  return comp.replace(r, function (_, M, m, p, pr) {
+    debug('caret', comp, _, M, m, p, pr)
+    var ret
+
+    if (isX(M)) {
+      ret = ''
+    } else if (isX(m)) {
+      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0'
+    } else if (isX(p)) {
+      if (M === '0') {
+        ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0'
+      } else {
+        ret = '>=' + M + '.' + m + '.0 <' + (+M + 1) + '.0.0'
+      }
+    } else if (pr) {
+      debug('replaceCaret pr', pr)
+      if (M === '0') {
+        if (m === '0') {
+          ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
+                ' <' + M + '.' + m + '.' + (+p + 1)
+        } else {
+          ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
+                ' <' + M + '.' + (+m + 1) + '.0'
+        }
+      } else {
+        ret = '>=' + M + '.' + m + '.' + p + '-' + pr +
+              ' <' + (+M + 1) + '.0.0'
+      }
+    } else {
+      debug('no pr')
+      if (M === '0') {
+        if (m === '0') {
+          ret = '>=' + M + '.' + m + '.' + p +
+                ' <' + M + '.' + m + '.' + (+p + 1)
+        } else {
+          ret = '>=' + M + '.' + m + '.' + p +
+                ' <' + M + '.' + (+m + 1) + '.0'
+        }
+      } else {
+        ret = '>=' + M + '.' + m + '.' + p +
+              ' <' + (+M + 1) + '.0.0'
+      }
+    }
+
+    debug('caret return', ret)
+    return ret
+  })
+}
+
+function replaceXRanges (comp, options) {
+  debug('replaceXRanges', comp, options)
+  return comp.split(/\s+/).map(function (comp) {
+    return replaceXRange(comp, options)
+  }).join(' ')
+}
+
+function replaceXRange (comp, options) {
+  comp = comp.trim()
+  var r = options.loose ? re[XRANGELOOSE] : re[XRANGE]
+  return comp.replace(r, function (ret, gtlt, M, m, p, pr) {
+    debug('xRange', comp, ret, gtlt, M, m, p, pr)
+    var xM = isX(M)
+    var xm = xM || isX(m)
+    var xp = xm || isX(p)
+    var anyX = xp
+
+    if (gtlt === '=' && anyX) {
+      gtlt = ''
+    }
+
+    if (xM) {
+      if (gtlt === '>' || gtlt === '<') {
+        // nothing is allowed
+        ret = '<0.0.0'
+      } else {
+        // nothing is forbidden
+        ret = '*'
+      }
+    } else if (gtlt && anyX) {
+      // we know patch is an x, because we have any x at all.
+      // replace X with 0
+      if (xm) {
+        m = 0
+      }
+      p = 0
+
+      if (gtlt === '>') {
+        // >1 => >=2.0.0
+        // >1.2 => >=1.3.0
+        // >1.2.3 => >= 1.2.4
+        gtlt = '>='
+        if (xm) {
+          M = +M + 1
+          m = 0
+          p = 0
+        } else {
+          m = +m + 1
+          p = 0
+        }
+      } else if (gtlt === '<=') {
+        // <=0.7.x is actually <0.8.0, since any 0.7.x should
+        // pass.  Similarly, <=7.x is actually <8.0.0, etc.
+        gtlt = '<'
+        if (xm) {
+          M = +M + 1
+        } else {
+          m = +m + 1
+        }
+      }
+
+      ret = gtlt + M + '.' + m + '.' + p
+    } else if (xm) {
+      ret = '>=' + M + '.0.0 <' + (+M + 1) + '.0.0'
+    } else if (xp) {
+      ret = '>=' + M + '.' + m + '.0 <' + M + '.' + (+m + 1) + '.0'
+    }
+
+    debug('xRange return', ret)
+
+    return ret
+  })
+}
+
+// Because * is AND-ed with everything else in the comparator,
+// and '' means "any version", just remove the *s entirely.
+function replaceStars (comp, options) {
+  debug('replaceStars', comp, options)
+  // Looseness is ignored here.  star is always as loose as it gets!
+  return comp.trim().replace(re[STAR], '')
+}
+
+// This function is passed to string.replace(re[HYPHENRANGE])
+// M, m, patch, prerelease, build
+// 1.2 - 3.4.5 => >=1.2.0 <=3.4.5
+// 1.2.3 - 3.4 => >=1.2.0 <3.5.0 Any 3.4.x will do
+// 1.2 - 3.4 => >=1.2.0 <3.5.0
+function hyphenReplace ($0,
+  from, fM, fm, fp, fpr, fb,
+  to, tM, tm, tp, tpr, tb) {
+  if (isX(fM)) {
+    from = ''
+  } else if (isX(fm)) {
+    from = '>=' + fM + '.0.0'
+  } else if (isX(fp)) {
+    from = '>=' + fM + '.' + fm + '.0'
+  } else {
+    from = '>=' + from
+  }
+
+  if (isX(tM)) {
+    to = ''
+  } else if (isX(tm)) {
+    to = '<' + (+tM + 1) + '.0.0'
+  } else if (isX(tp)) {
+    to = '<' + tM + '.' + (+tm + 1) + '.0'
+  } else if (tpr) {
+    to = '<=' + tM + '.' + tm + '.' + tp + '-' + tpr
+  } else {
+    to = '<=' + to
+  }
+
+  return (from + ' ' + to).trim()
+}
+
+// if ANY of the sets match ALL of its comparators, then pass
+Range.prototype.test = function (version) {
+  if (!version) {
+    return false
+  }
+
+  if (typeof version === 'string') {
+    version = new SemVer(version, this.options)
+  }
+
+  for (var i = 0; i < this.set.length; i++) {
+    if (testSet(this.set[i], version, this.options)) {
+      return true
+    }
+  }
+  return false
+}
+
+function testSet (set, version, options) {
+  for (var i = 0; i < set.length; i++) {
+    if (!set[i].test(version)) {
+      return false
+    }
+  }
+
+  if (version.prerelease.length && !options.includePrerelease) {
+    // Find the set of versions that are allowed to have prereleases
+    // For example, ^1.2.3-pr.1 desugars to >=1.2.3-pr.1 <2.0.0
+    // That should allow `1.2.3-pr.2` to pass.
+    // However, `1.2.4-alpha.notready` should NOT be allowed,
+    // even though it's within the range set by the comparators.
+    for (i = 0; i < set.length; i++) {
+      debug(set[i].semver)
+      if (set[i].semver === ANY) {
+        continue
+      }
+
+      if (set[i].semver.prerelease.length > 0) {
+        var allowed = set[i].semver
+        if (allowed.major === version.major &&
+            allowed.minor === version.minor &&
+            allowed.patch === version.patch) {
+          return true
+        }
+      }
+    }
+
+    // Version has a -pre, but it's not one of the ones we like.
+    return false
+  }
+
+  return true
+}
+
+exports.satisfies = satisfies
+function satisfies (version, range, options) {
+  try {
+    range = new Range(range, options)
+  } catch (er) {
+    return false
+  }
+  return range.test(version)
+}
+
+exports.maxSatisfying = maxSatisfying
+function maxSatisfying (versions, range, options) {
+  var max = null
+  var maxSV = null
+  try {
+    var rangeObj = new Range(range, options)
+  } catch (er) {
+    return null
+  }
+  versions.forEach(function (v) {
+    if (rangeObj.test(v)) {
+      // satisfies(v, range, options)
+      if (!max || maxSV.compare(v) === -1) {
+        // compare(max, v, true)
+        max = v
+        maxSV = new SemVer(max, options)
+      }
+    }
+  })
+  return max
+}
+
+exports.minSatisfying = minSatisfying
+function minSatisfying (versions, range, options) {
+  var min = null
+  var minSV = null
+  try {
+    var rangeObj = new Range(range, options)
+  } catch (er) {
+    return null
+  }
+  versions.forEach(function (v) {
+    if (rangeObj.test(v)) {
+      // satisfies(v, range, options)
+      if (!min || minSV.compare(v) === 1) {
+        // compare(min, v, true)
+        min = v
+        minSV = new SemVer(min, options)
+      }
+    }
+  })
+  return min
+}
+
+exports.minVersion = minVersion
+function minVersion (range, loose) {
+  range = new Range(range, loose)
+
+  var minver = new SemVer('0.0.0')
+  if (range.test(minver)) {
+    return minver
+  }
+
+  minver = new SemVer('0.0.0-0')
+  if (range.test(minver)) {
+    return minver
+  }
+
+  minver = null
+  for (var i = 0; i < range.set.length; ++i) {
+    var comparators = range.set[i]
+
+    comparators.forEach(function (comparator) {
+      // Clone to avoid manipulating the comparator's semver object.
+      var compver = new SemVer(comparator.semver.version)
+      switch (comparator.operator) {
+        case '>':
+          if (compver.prerelease.length === 0) {
+            compver.patch++
+          } else {
+            compver.prerelease.push(0)
+          }
+          compver.raw = compver.format()
+          /* fallthrough */
+        case '':
+        case '>=':
+          if (!minver || gt(minver, compver)) {
+            minver = compver
+          }
+          break
+        case '<':
+        case '<=':
+          /* Ignore maximum versions */
+          break
+        /* istanbul ignore next */
+        default:
+          throw new Error('Unexpected operation: ' + comparator.operator)
+      }
+    })
+  }
+
+  if (minver && range.test(minver)) {
+    return minver
+  }
+
+  return null
+}
+
+exports.validRange = validRange
+function validRange (range, options) {
+  try {
+    // Return '*' instead of '' so that truthiness works.
+    // This will throw if it's invalid anyway
+    return new Range(range, options).range || '*'
+  } catch (er) {
+    return null
+  }
+}
+
+// Determine if version is less than all the versions possible in the range
+exports.ltr = ltr
+function ltr (version, range, options) {
+  return outside(version, range, '<', options)
+}
+
+// Determine if version is greater than all the versions possible in the range.
+exports.gtr = gtr
+function gtr (version, range, options) {
+  return outside(version, range, '>', options)
+}
+
+exports.outside = outside
+function outside (version, range, hilo, options) {
+  version = new SemVer(version, options)
+  range = new Range(range, options)
+
+  var gtfn, ltefn, ltfn, comp, ecomp
+  switch (hilo) {
+    case '>':
+      gtfn = gt
+      ltefn = lte
+      ltfn = lt
+      comp = '>'
+      ecomp = '>='
+      break
+    case '<':
+      gtfn = lt
+      ltefn = gte
+      ltfn = gt
+      comp = '<'
+      ecomp = '<='
+      break
+    default:
+      throw new TypeError('Must provide a hilo val of "<" or ">"')
+  }
+
+  // If it satisifes the range it is not outside
+  if (satisfies(version, range, options)) {
+    return false
+  }
+
+  // From now on, variable terms are as if we're in "gtr" mode.
+  // but note that everything is flipped for the "ltr" function.
+
+  for (var i = 0; i < range.set.length; ++i) {
+    var comparators = range.set[i]
+
+    var high = null
+    var low = null
+
+    comparators.forEach(function (comparator) {
+      if (comparator.semver === ANY) {
+        comparator = new Comparator('>=0.0.0')
+      }
+      high = high || comparator
+      low = low || comparator
+      if (gtfn(comparator.semver, high.semver, options)) {
+        high = comparator
+      } else if (ltfn(comparator.semver, low.semver, options)) {
+        low = comparator
+      }
+    })
+
+    // If the edge version comparator has a operator then our version
+    // isn't outside it
+    if (high.operator === comp || high.operator === ecomp) {
+      return false
+    }
+
+    // If the lowest version comparator has an operator and our version
+    // is less than it then it isn't higher than the range
+    if ((!low.operator || low.operator === comp) &&
+        ltefn(version, low.semver)) {
+      return false
+    } else if (low.operator === ecomp && ltfn(version, low.semver)) {
+      return false
+    }
+  }
+  return true
+}
+
+exports.prerelease = prerelease
+function prerelease (version, options) {
+  var parsed = parse(version, options)
+  return (parsed && parsed.prerelease.length) ? parsed.prerelease : null
+}
+
+exports.intersects = intersects
+function intersects (r1, r2, options) {
+  r1 = new Range(r1, options)
+  r2 = new Range(r2, options)
+  return r1.intersects(r2)
+}
+
+exports.coerce = coerce
+function coerce (version) {
+  if (version instanceof SemVer) {
+    return version
+  }
+
+  if (typeof version !== 'string') {
+    return null
+  }
+
+  var match = version.match(re[COERCE])
+
+  if (match == null) {
+    return null
+  }
+
+  return parse(match[1] +
+    '.' + (match[2] || '0') +
+    '.' + (match[3] || '0'))
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ï»¿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v3" manifestVersion="1.0" description="Spelling for Tatar (Russia)" displayName="Tatar (Russia) typing" copyright="Copyright (c) Microsoft Corporation. All Rights Reserved" supportInformation="http://support.microsoft.com/?kbid=777777">
+  <assemblyIdentity name="Microsoft-Windows-LanguageFeatures-Basic-tt-ru-Package" version="10.0.18362.1" processorArchitecture="amd64" language="neutral" buildType="release" publicKeyToken="31bf3856ad364e35" />
+  <package identifier="KB777778" releaseType="OnDemand Pack">
+    <mum2:customInformation xmlns:mum2="urn:schemas-microsoft-com:asm.v3">
+      <mum2:OptionalFeatures SchemaVersion="1.0">
+        <mum2:SettingsPageOptions Visibility="installed" FeatureType="language" ManageFeatureSettings="page=SettingsPageTimeRegionLanguage" />
+      </mum2:OptionalFeatures>
+    </mum2:customInformation>
+    <localizedStrings>
+      <string language="ar-SA" displayName="Ø§Ù„ÙƒØªØ§Ø¨Ø© Ø¨Ø§Ù„Ù„ØºØ© Ø§Ù„ØªØªØ±ÙŠØ© (Ø±ÙˆØ³ÙŠØ§)" description="Ø§Ù„ØªØ¯Ù‚ÙŠÙ‚ Ø§Ù„Ø¥Ù…Ù„Ø§Ø¦ÙŠ Ø¨Ø§Ù„Ù„ØºØ© Ø§Ù„ØªØªØ±ÙŠØ© (Ø±ÙˆØ³ÙŠØ§)" />
+      <string language="bg-BG" displayName="Ğ’ÑŠĞ²ĞµĞ¶Ğ´Ğ°Ğ½Ğµ Ğ½Ğ° Ñ‚Ğ°Ñ‚Ğ°Ñ€ÑĞºĞ¸ (Ğ ÑƒÑĞ¸Ñ)" description="ĞŸÑ€Ğ°Ğ²Ğ¾Ğ¿Ğ¸ÑĞ½Ğ° Ğ¿Ñ€Ğ¾Ğ²ĞµÑ€ĞºĞ° Ğ·Ğ° Ñ‚Ğ°Ñ‚Ğ°Ñ€ÑĞºĞ¸ (Ğ ÑƒÑĞ¸Ñ)" />
+      <string language="cs-CZ" displayName="PsanÃ­ v tatarÅ¡tinÄ› (Rusko)" description="Kontrola pravopisu pro tatarÅ¡tinu (Rusko)" />
+      <string language="da-DK" displayName="Indtastning pÃ¥ tatarisk (russisk)" description="Stavekontrol pÃ¥ tatarisk (russisk)" />
+      <string language="de-DE" displayName="Eingabe Tatarisch (Russland)" description="RechtschreibprÃ¼fung fÃ¼r Tatarisch (Russland)" />
+      <string language="el-GR" displayName="Î Î»Î·ÎºÏ„ÏÎ¿Î»ÏŒÎ³Î·ÏƒÎ· ÏƒÏ„Î± Î¤Î±Ï„Î±ÏÎ¹ÎºÎ¬ (Î¡Ï‰ÏƒÎ¯Î±Ï‚)" description="ÎŸÏÎ¸Î¿Î³ÏÎ±Ï†Î¯Î± Î³Î¹Î± Î¤Î±Ï„Î±ÏÎ¹ÎºÎ¬ (Î¡Ï‰ÏƒÎ¯Î±Ï‚)" />
+      <string language="en-GB" displayName="Tatar (Russia) typing" description="Spelling for Tatar (Russia)" />
+      <string language="en-US" displayName="Tatar (Russia) typing" description="Spelling for Tatar (Russia)" />
+      <string language="es-ES" displayName="Escritura en tÃ¡rtaro (Rusia)" description="OrtografÃ­a para tÃ¡rtaro (Rusia)" />
+      <string language="es-MX" displayName="Escritura en tÃ¡rtaro (Rusia)" description="OrtografÃ­a para tÃ¡rtaro (Rusia)" />
+      <string language="et-EE" displayName="Tippimine tatari (Venemaa) keeles" description="Ã•igekirjakontroll tatari (Venemaa) keele jaoks" />
+      <string language="fi-FI" displayName="Tataarin (VenÃ¤jÃ¤) kirjoittaminen" description="Tataarin (VenÃ¤jÃ¤) oikeinkirjoitus" />
+      <string language="fr-CA" displayName="Saisie en tatar (Russie)" description="Orthographe du tatar (Russie)" />
+      <string language="fr-FR" displayName="Saisie Tatar (Russie)" description="Orthographe pour Tatar (Russie)" />
+      <string language="he-IL" displayName="×”×§×œ×“×” ×‘×˜×˜××¨×™×ª (×¨×•×¡×™×”)" description="××™×•×ª ×¢×‘×•×¨ ×˜×˜××¨×™×ª (×¨×•×¡×™×”)" />
+      <string language="hr-HR" displayName="Tipkanje na tatarskom (Rusija)" description="Provjera pravopisa za tatarski (Rusija)" />
+      <string language="hu-HU" displayName="TatÃ¡r (OroszorszÃ¡g) gÃ©pelÃ©s" description="HelyesÃ­rÃ¡s-ellenÅ‘rzÃ©s tatÃ¡r (OroszorszÃ¡g) nyelven" />
+      <string language="it-IT" displayName="Digitazione tataro (Russia)" description="Controllo ortografia per tataro (Russia)" />
+      <string language="ja-JP" displayName="ã‚¿ã‚¿ãƒ¼ãƒ«èª (ãƒ­ã‚·ã‚¢) å…¥åŠ›" description="ã‚¿ã‚¿ãƒ¼ãƒ«èª (ãƒ­ã‚·ã‚¢) ã®ã‚¹ãƒšãƒ« ãƒã‚§ãƒƒã‚¯" />
+      <string language="ko-KR" displayName="íƒ€íƒ€ë¥´ì–´(ëŸ¬ì‹œì•„) ì…ë ¥" description="íƒ€íƒ€ë¥´ì–´(ëŸ¬ì‹œì•„) ë§ì¶¤ë²•" />
+      <string language="lt-LT" displayName="RaÅ¡ymas klaviatÅ«ra totoriÅ³ (Rusija) kalba" description="RaÅ¡yba totoriÅ³ (Rusija) kalba" />
+      <string language="lv-LV" displayName="TatÄru valodas (Krievija) maÅ¡Ä«nrakstÄ«Å¡ana" description="TatÄru valodas (Krievija) pareizrakstÄ«bas pÄrbaude" />
+      <string language="nb-NO" displayName="Tatar (Russland) inntasting" description="Stavekontroll for tatar (Russland)" />
+      <string language="nl-NL" displayName="Tataars (Rusland) typen" description="Spelling voor Tataars (Rusland)" />
+      <string language="pl-PL" displayName="Pisanie w jÄ™zyku tatarskim (Rosja)" description="Pisownia dla jÄ™zyka tatarskiego (Rosja)" />
+      <string language="pt-BR" displayName="DigitaÃ§Ã£o em tÃ¡rtaro (RÃºssia)" description="Ortografia para tÃ¡rtaro (RÃºssia)" />
+      <string language="pt-PT" displayName="Escrita em tatar (RÃºssia)" description="Ortografia para tatar (RÃºssia)" />
+      <string language="ro-RO" displayName="Tastare pentru tÄƒtarÄƒ (Rusia)" description="Ortografie pentru tÄƒtarÄƒ (Rusia)" />
+      <string language="ru-RU" displayName="Ğ’Ğ²Ğ¾Ğ´ Ğ½Ğ° Ñ‚Ğ°Ñ‚Ğ°Ñ€ÑĞºĞ¾Ğ¼ ÑĞ·Ñ‹ĞºĞµ (Ğ Ğ¾ÑÑĞ¸Ñ)" description="ĞŸÑ€Ğ¾Ğ²ĞµÑ€ĞºĞ° Ğ¾Ñ€Ñ„Ğ¾Ğ³Ñ€Ğ°Ñ„Ğ¸Ğ¸ Ğ´Ğ»Ñ Ñ‚Ğ°Ñ‚Ğ°Ñ€ÑĞºĞ¾Ğ³Ğ¾ ÑĞ·Ñ‹ĞºĞ° (Ğ Ğ¾ÑÑĞ¸Ñ)" />
+      <string language="sk-SK" displayName="PÃ­sanie v tatÃ¡rÄine (Rusko)" description="Kontrola pravopisu pre tatÃ¡rÄinu (Rusko)" />
+      <string language="sl-SI" displayName="VnaÅ¡anje v tatarÅ¡Äini (Rusija)" description="ÄŒrkovanje v tatarÅ¡Äini (Rusija)" />
+      <string language="sr-Latn-RS" displayName="Kucanje za tatarski (Rusija)" description="Pravopis za tatarski (Rusija)" />
+      <string language="sv-SE" displayName="Skriva pÃ¥ tatariska (Ryssland)" description="Stavning fÃ¶r tatariska (Ryssland)" />
+      <string language="th-TH" displayName="à¸à¸²à¸£à¸à¸´à¸¡à¸à¹Œà¸ à¸²à¸©à¸²à¸—à¸²à¸—à¸²à¸£à¹Œ (à¸£à¸±à¸ªà¹€à¸‹à¸µà¸¢)" description="à¸à¸²à¸£à¸ªà¸°à¸à¸”à¸ à¸²à¸©à¸²à¸—à¸²à¸—à¸²à¸£à¹Œ (à¸£à¸±à¸ªà¹€à¸‹à¸µà¸¢)" />
+      <string language="tr-TR" displayName="Tatarca (Rusya) yazÄ±" description="Tatarca (Rusya) iÃ§in yazÄ±m denetimi" />
+      <string language="uk-UA" displayName="Ğ’Ğ²ĞµĞ´ĞµĞ½Ğ½Ñ Ñ‚ĞµĞºÑÑ‚Ñƒ: Ñ‚Ğ°Ñ‚Ğ°Ñ€ÑÑŒĞºĞ° (Ğ Ğ¾ÑÑ–Ñ)" description="ĞŸĞµÑ€ĞµĞ²Ñ–Ñ€ĞºĞ° Ğ¾Ñ€Ñ„Ğ¾Ğ³Ñ€Ğ°Ñ„Ñ–Ñ—: Ñ‚Ğ°Ñ‚Ğ°Ñ€ÑÑŒĞºĞ° (Ğ Ğ¾ÑÑ–Ñ)" />
+      <string language="zh-CN" displayName="é‘é¼è¯­(ä¿„ç½—æ–¯)è¾“å…¥æ³•" description="é‘é¼è¯­(ä¿„ç½—æ–¯)æ‹¼å†™" />
+      <string language="zh-TW" displayName="éŸƒé¼æ–‡ (ä¿„ç¾…æ–¯) è¼¸å…¥" description="é©ç”¨æ–¼éŸƒé¼æ–‡ (ä¿„ç¾…æ–¯) çš„æ‹¼å­—æª¢æŸ¥" />
+    </localizedStrings>
+    <declareCapability>
+      <capability>
+        <capabilityIdentity name="Language.Basic" version="1.0" language="tt-ru" />
+      </capability>
+    </declareCapability>
+    <update name="caab4f56de1d2d6b5aae45389df2e2a9">
+      <package contained="false" integrate="hidden">
+        <assemblyIdentity name="Microsoft-Windows-Spelling-Dictionaries-tt-Package" version="10.0.18362.1" processorArchitecture="amd64" language="neutral" buildType="release" publicKeyToken="31bf3856ad364e35" />
+      </package>
+    </update>
+    <packageExtended packageSize="2823089" />
+  </package>
+</assembly>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ï»¿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v3" manifestVersion="1.0" description="Handwriting and pen for Setswana" displayName="Setswana handwriting" copyright="Copyright (c) Microsoft Corporation. All Rights Reserved" supportInformation="http://support.microsoft.com/?kbid=777777">
+  <assemblyIdentity name="Microsoft-Windows-LanguageFeatures-Handwriting-tn-za-Package" version="10.0.18362.1" processorArchitecture="amd64" language="neutral" buildType="release" publicKeyToken="31bf3856ad364e35" />
+  <package identifier="KB777778" releaseType="OnDemand Pack">
+    <mum2:customInformation xmlns:mum2="urn:schemas-microsoft-com:asm.v3">
+      <mum2:OptionalFeatures SchemaVersion="1.0">
+        <mum2:SettingsPageOptions Visibility="installed" FeatureType="language" ManageFeatureSettings="page=SettingsPageTimeRegionLanguage" />
+      </mum2:OptionalFeatures>
+    </mum2:customInformation>
+    <localizedStrings>
+      <string language="en-US" displayName="Setswana handwriting" description="Handwriting and pen for Setswana" />
+    </localizedStrings>
+    <declareCapability>
+      <capability>
+        <capabilityIdentity name="Language.Handwriting" version="1.0" language="tn-za" />
+      </capability>
+      <dependency>
+        <capabilityIdentity name="Language.Basic" version="1.0" language="tn-za" />
+      </dependency>
+    </declareCapability>
+    <update name="50b79cc35dc663311c28f1402413d263">
+      <component>
+        <assemblyIdentity name="Microsoft-Windows-LanguageFeatures-Handwriting-tn-za-Deployment" version="10.0.18362.1" processorArchitecture="amd64" language="neutral" buildType="release" publicKeyToken="31bf3856ad364e35" versionScope="nonSxS" />
+      </component>
+    </update>
+    <update name="974c6468d567c2c3478582753872e07e">
+      <package contained="false" integrate="hidden">
+        <assemblyIdentity name="Microsoft-Windows-LanguageFeatures-Handwriting-tn-za-Package" version="10.0.18362.1" processorArchitecture="wow64" language="neutral" buildType="release" publicKeyToken="31bf3856ad364e35" />
+      </package>
+    </update>
+    <packageExtended packageSize="3625854" />
+  </package>
+</assembly>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       MZ       ÿÿ  ¸       @                                   ø   º ´	Í!¸LÍ!This program cannot be run in DOS mode.
+$       3 pwA|#wA|#wA|#~9ï#qA|#,)x"`A|#,)"tA|#wA}#°A|#,)}"tA|#,)y"sA|#,)|"vA|#,)r"rA|#,)ƒ#vA|#,)~"vA|#RichwA|#                PE  d† ºË½        ğ "  î   Œ      0        €         
+   
+   
+        À    ÜH  `A                                    3 Ø  Ø9 d    € ¸"   ` Œ           ° |   T                           °              À  L- €                   .text   7í      î                    `.rdata  ,I      J   ò              @  @.data   °	   P     <             @  À.pdata  Œ   `     @             @  @.didat  €   p     N             @  À.rsrc   ¸"   €  $   P             @  @.reloc  |   °     t             @  B                                                                                                                                                                                                                                        ÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌHƒì(HeB ÇKH ø   HÔ? H‰I H6H ÇÜH   è7   …ÀxÜ ÇI    3ÀñG HƒÄ(ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌH‰\$H‰t$H‰L$WHƒì H‹ÙH…É„J"  ‹	Pÿÿÿ©·ÿÿÿ…7"  ù¸   „+"  H‰S L‰CL‰CL‰C3ÿ‰{(H‰{0HK8ÿ¾ú  ëH‹L$0HƒÁ83ÒDB(èö  ¸  Àé  HK`ÿ”ú  ë7H‹\$0HK8ÿ{ú  HK`3ÒDB(èÂ  3ÒDB(HK8è³  ¸  ÀéÜ   H‹ˆ   ÿNú  ëPH‹\$0HK`ÿ5ú  HK8ÿ+ú  H‹ˆ   3ÒDB(èo  3ÒDB(HK`è`  3ÒDB(HK8èQ  ¸  Àë}‹‹Áù°   v^H‰»¸   ÆƒÀ   ‰»Ğ   ‰»à   H‰»Ø   H‰»è   H‹{ H…ÿt-Hƒ? t'±H‹G@ÿÕı  ‹=°   „à   ¹H   HùHƒ? uÙ=ğ   v
+Çƒğ      3ÀH‹\$8H‹t$@HƒÄ _ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌH‰\$WHƒì H‹ÚH‹ùH…Ét2H…ÒtH‹H‹ÊH‹@ÿ^ı  H‹H…É…~   H‰H‹ÃH‹\$0HƒÄ _Ã3ÀëñÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ¸   ğÁA0ÿÀÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ¸   ğÁAÿÀÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ¸   ğÁAHÿÀÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ‹AÿÀ‰AÃÌÌÌÌÌÌÌ3ÀÃÌÌÌÌÌÌÌÌÌÌÌÌÌ¸@ €ÃÌÌÌÌÌÌÌÌÌÌH‹˜   ÃÌÌÌÌÌÌÌÌH‹A¸H‰3ÀÃÌÌÌÌÌÌHÉ¸  ÃÌÌÌÌÌÌÌÌº±˜   ƒâÁâ3À	‘˜   ÃÌÌÌÌÌÌÌÌÌÂ  ÌÌÌÌÌÌÌÌÌÌÌÌÌ¸¡€ÃÌÌÌÌÌÌÌÌÌÌ¸   ÃÌÌÌÌÌÌÌÌÌÌ‹˜   ‰3ÀÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ‹¼   ‰3ÀÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ‹¸   ‰3ÀÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ‹œ   ‰3ÀÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ‹    ‰3ÀÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ3Àf‰ÃÌÌÌÌÌÌÌÌÌÌƒ¡”   ß¿ÂƒàÁà	”   3ÀÃÌÌÌÌÌÌÌƒ¡”   ¿¿ÂƒàÁà	”   3ÀÃÌÌÌÌÌÌÌƒ¡”   ş¿Âƒà	”   3ÀÃÌÌÌÌÌÌÌÌÌÌ‰‘¼   3ÀÃÌÌÌÌÌÌÌ@SHƒìPH‹ÙH…É„&  H‰l$`3íH‰t$hH‰|$pH‹y H…ÿtQH9/tLu8H‹O H…ÉtH‹H‹@ÿ®ú  H‰o ‹ù°   vH‹G@3Éÿ”ú  ‹ù°   ¸H   HDÆHøH9/u·3ÒHL$ DB(è‘  A¸(   HT$ HK8èe  …Àt
+HK8ÿö  A¸(   HT$ HK`èC  …Àt
+HK`ÿ÷õ  A¸(   HT$ H‹ˆ   è  …ÀtH‹ˆ   ÿÏõ  ;°   vH‹³è   H…ö…1  H‹K0H…É…J  H‹|$p3ÀH‹t$hH‹l$`HƒÄP[ÃÌÌÌÌÌÌÌÌÌÌÌH‰\$H‰l$H‰t$WHƒì A‹ğ‹êH‹ÙH…ÉtWH‹A H…ÀtU3ÉH9t0H‹ø…Éu)D‹Æ‹ÕH‹ÈèC   ;°   ‹È¸8   PEÂHÇHƒ8 uĞ‹ÁH‹\$0H‹l$8H‹t$@HƒÄ _Ã¸W €ëäëâÌÌÌÌÌÌÌL‹ÜI‰[I‰kI‰s WHƒì0Iƒc A‹ğH‹A‹êH‹ÙH…ÀthH‹IMCHş  ÿñø  ‹ø…ÀxH‹T$@HC(H‹D‹ÎD‹ÅH‰D$ ÿÆY ‹øH‹L$@H…ÉtH‹H‹@ÿµø  ‹ÇH‹\$HH‹l$PH‹t$XHƒÄ0_ÃëéÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌH‰\$WHƒì H‹ÙH…ÉtIH‹A H…ÀtG3ÉH9t,H‹ø…Éu%‹H(ÿVY ;°   ‹È¸8   PEÂHÇHƒ8 uÔ‹ÁH‹\$0HƒÄ _Ã¸W €ëîëìÌÌÌÌÌÌÌÌÌÌÌÌHƒì8‹¢ L‹Wõ  L‹˜ ‰D$(H‰T$ H‹ÑH%èÿÿÿ/õ  HƒÄ8ÃÌÌÌÌÌÌÌÌÌÌH‰|$L‰t$ AWHƒì0M‹ñI‹øL‹ùH…É„²  H…Ò„©  M…É„\  IÇ    Aƒ8 H‰\$@„˜   Hƒz HZH‰t$Ht%fD  H‹KğH…É„-  ‹3ö9t*HƒÃHƒ; uá¸@ €H‹t$HH‹\$@H‹|$PL‹t$XHƒÄ0A_Ã‹G9AuÎ‹G9AuÆ‹G9Au¾H‹Hƒø…à  H‹[øIßH‹ËH‹H‹@ÿıö  3ÀI‰ë¢Aƒx …]ÿÿÿAxÀ   …OÿÿÿAx   F…AÿÿÿH‹ZIßH‹ËH‹H‹@ÿ¸ö  3ÀI‰é_ÿÿÿÌÌÌÌÌÌH‰\$H‰t$H‰|$ H‰L$ATAVAWHƒì0I‹ùM‹àL‹ÉH…É„~  H‹Y H…Û„{  3öH…ÿ„z  H‰7DFHH‹H…É„   H9s„g  ‹9…]  ‹A9B…Q  ‹A9B…E  ‹A9B…9  H‹K H…ÉuIM¹ˆ   I‹ÏÿÄñ  Hƒ{  uLC Hqû  H‹KH‹CÿÛõ  ‹ğ‰D$ I‹ÏÿŒñ  H‹K H…ÉtH‹L‹ÇI‹ÔH‹ ÿ±õ  ‹ğHƒ? „á  ‹ÆH‹\$XH‹t$`H‹|$hHƒÄ0A_A^A\ÃÌÌÌÌÌÌÌÌÌé   ÌÌÌÌÌÌÌé›  ÌÌÌÌÌÌÌH‰\$WHƒì H‹ùëH‹Ïè^  …ÀtH‹Ïè‰  H‹ØH…ÀtäH‹ÃH‹\$0HƒÄ _ÃÌÌÌÌÌÌÌé»ÿÿÿÌÌÌÌÌÌÌÌÌÌÌHƒì(¹   ÿÑô  H‰j= H‰[= H…Àu¸   ëHƒ  3ÀHƒÄ(ÃÌÌÌÌÌÌÌÌH‰\$H‰l$H‰t$ATAVAWHƒì 3ÛM‹ğL‹ù…Ò…ò   ‹u7 …Àv  ÿÈD‹ó‰b7 eH‹%0   H‹pëH;Æt¹è  ÿ#ğ  3ÀğH±5à< uãëA¾   ‹Ø< ƒøt¹   èv  éƒ  H‹-­< H…ítdH‹5™< L‹åL‹şHƒîH;õr7H‹H…ÀtïH‰ÿô  H‹z< H‹k< L;áuL;øtÎL‹áH‹éL‹øH‹ğëÀH‹Íÿšó  H‰C< H‰D< ‰N< E…ö…  H‡6< éø   ƒú…ï   eH‹%0   ‹ëH‹pëH;Æt¹è  ÿ?ï  3ÀğH±5ü; uãë½   ‹õ; …Àt¹   è”  ë_H5~ó  ÇÔ;    L%}ó  ‹ÃI;ôs#…ÀuH9t	H‹ÿ<ó  HƒÆI;ôrå…Àt3ÀëgH4ó  H%ó  è  Ç†;    …íu
+H‹ÃH‡p; H9y; t(Hp; ès  …ÀtH‹`; M‹Æº   I‹ÏÿÏò  ÿ‘5 ¸   H‹\$@H‹l$HH‹t$PHƒÄ A_A^A\ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌH‰\$H‰t$WHƒì I‹ø‹ÚH‹ñƒúuè“  L‹Ç‹ÓH‹ÎH‹\$0H‹t$8HƒÄ _é   ÌÌÌÌÌÌÌH‹ÄH‰X L‰@‰PH‰HVWAVHìP  ‹úL‹ñ¾   ‹Ş‰\$ ;Öw‰µ4 …Òu9Û4 u3Û‰\$ éÚ  Bÿ;Æ‡   L‹|: M…ÉtB‹µ4 ;ÖDÆ‰ª4 L‹„$€  I‹ÁÿÍñ  ‹Ø‰D$ ë3Û‰\$ s‹¼$x  L‹´$p  …Û„y  L‹„$€  ‹×I‹Îè·üÿÿ‹Ø‰D$ ë3Û‰\$ s‹¼$x  L‹´$p  …Û„?  L‹„$€  ‹×I‹Îèá  ‹Ø‰D$ ë3Û‰\$ s‹¼$x  L‹´$p  ;ş…Š   …Û…‚   E3À3ÒI‹Îè¤  ë¾   ‹¼$x  L‹´$p  ‹\$ E3À3ÒI‹Îèüÿÿë¾   ‹¼$x  L‹´$p  ‹\$ H‹\9 H…Àt(E3À3ÒI‹ÎÿÁğ  ë¾   ‹¼$x  L‹´$p  ‹\$ …ÿtƒÿurL‹„$€  ‹×I‹Îè°ûÿÿ‹Ø‰D$ ë3Û‰\$ s‹¼$x  L‹´$p  H‹í8 H…Àt4ƒ=%3  t+L‹„$€  ‹×I‹ÎÿDğ  ‹Ø‰D$ ë3Û‰\$ s‹¼$x  ;şw
+Ç¶2 ÿÿÿÿ‹ÃH‹œ$ˆ  HÄP  A^_^ÃÌÌÌÌÌÌff„     H;‘2 uHÁÁf÷ÁÿÿuÃHÁÉér   ÌÌÌÌÌÌÿ%~ï  ÌÌÌÌÌÌÿ%’ï  ÌÌÌÌÌÌÿ%~ï  ÌÌÌÌÌÌ@SHƒì H‹Ù3ÉÿGì  H‹Ëÿşë  ÿ ì  H‹Èº	 ÀHƒÄ [Hÿ%,ì  ÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌH‰L$Hìˆ   HÍ2 ÿïê  H‹¸3 H‰D$HE3ÀHT$PH‹L$HÿÈê  H‰D$@Hƒ|$@ tBHÇD$8    HD$XH‰D$0HD$`H‰D$(Hw2 H‰D$ L‹L$@L‹D$HH‹T$P3Éÿ#ì  ë#H‹ê2 H‹ H‰@3 H‹Ù2 HƒÀH‰Î2 H‹'3 H‰˜1 H‹„$   H‰™2 Ço1 	 ÀÇi1    Çs1    ¸   HkÀ Hk1 HÇ   ¸   HkÀHS1 H‹ô0 H‰¸   HkÀH81 H‹á0 H‰¸   HkÀ H‹Å0 H‰Lh¸   HkÀH‹¸0 H‰LhH<Ş  èOşÿÿHÄˆ   ÃÌÌÌÌÌÌÌHƒìxH]1 ÿé  H‹H2 H‰D$HE3ÀHT$PH‹L$HÿXé  H‰D$@Hƒ|$@ tBHÇD$8    HD$XH‰D$0HD$`H‰D$(H1 H‰D$ L‹L$@L‹D$HH‹T$P3Éÿ³ê  ë#H‹z1 H‹ H‰Ğ1 H‹i1 HƒÀH‰^1 H‹·1 H‰(0 Ç0 	 ÀÇ0    Ç0    ¸   HkÀ H
+0 HÇ   H;İ  èNıÿÿHƒÄxÃÌÌÌÌÌÌÿ%…ì  ÌÌÌÌÌÌÿ%™ì  ÌÌÌÌÌÌÿ%eì  ÌÌÌÌÌÌÌÌÌÌÌÌÌLcA<E3ÉLÁL‹ÒA·@E·XHƒÀIÀE…Ût‹PL;Òr
+‹HÊL;ÑrAÿÁHƒÀ(E;Ërâ3ÀÃÌÌÌÌÌÌÌÌÌÌÌÌH‰\$WHƒì H‹ÙH=œÜÿÿH‹ÏèD   …Àt"H+ßH‹ÓH‹Ïè‚ÿÿÿH…Àt‹@$Áè÷Ğƒàë3ÀH‹\$0HƒÄ _ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ¸MZ  f9u HcA<HÁ8PE  u¹  f9Hu¸   Ã3ÀÃÌÌÌÌÌÌÌH‰\$ UH‹ìHƒì Hƒe H»2¢ß-™+  H‹a. H;Ã…“   HMÿŞè  H‹EH‰EÿÀè  ‹ÀH1Eÿôç  ‹ÀH1EÿÀè  ‹ÀHÁàH1Eÿ°è  ‹ÀHMH3EH3ÁHM H‰Eÿmè  ‹E H¹ÿÿÿÿÿÿ  HÁà H3E H3EH#ÁH‹ÈH;ÃuH¸3¢ß-™+  H‹ÈH‰Å- H‹\$HH÷ĞH‰¾- HƒÄ ]ÃÌÌÌÌÌÌÿ%Œê  ÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌH‹K é    H‰L$H‰T$L‰D$L‰L$ HƒìhfD$ fL$0fT$@f\$PH‹ĞH0 èòÿÿfoD$ foL$0foT$@fo\$PH‹L$pH‹T$xL‹„$€   L‹Œ$ˆ   HƒÄhë ÿàÌÌÌÌÌÌH L é    H‰L$H‰T$L‰D$L‰L$ HƒìhfD$ fL$0fT$@f\$PH‹ĞHÅ èòÿÿfoD$ foL$0foT$@fo\$PH‹L$pH‹T$xL‹„$€   L‹Œ$ˆ   HƒÄhë ÿàÌÌÌÌÌÌH]K éuÿÿÿÌÌÌÌÌÌHSJ éØşÿÿÌÌÌÌÌÌH1K éQÿÿÿÌÌÌÌÌÌHK é?ÿÿÿÌÌÌÌÌÌH%J é¢şÿÿÌÌÌÌÌÌH#J éşÿÿÌÌÌÌÌÌHÙJ é	ÿÿÿÌÌÌÌÌÌHßI élşÿÿÌÌÌÌÌÌH­J éåşÿÿÌÌÌÌÌÌH“J éÓşÿÿÌÌÌÌÌÌH±J éÁşÿÿÌÌÌÌÌÌH¿I é$şÿÿÌÌÌÌÌÌHEJ éşÿÿÌÌÌÌÌÌH«I é şÿÿÌÌÌÌÌÌH¡I éîıÿÿÌÌÌÌÌÌH—I éÜıÿÿÌÌÌÌÌÌHI éÊıÿÿÌÌÌÌÌÌHãI éCşÿÿÌÌÌÌÌÌHyI é¦ıÿÿÌÌÌÌÌÌH·I éşÿÿÌÌÌÌÌÌHeI é‚ıÿÿÌÌÌÌÌÌH[I épıÿÿÌÌÌÌÌÌHQI é^ıÿÿÌÌÌÌÌÌHI é×ıÿÿÌÌÌÌÌÌHÍI éÅıÿÿÌÌÌÌÌÌH+I é(ıÿÿÌÌÌÌÌÌHI éıÿÿÌÌÌÌÌÌHI éıÿÿÌÌÌÌÌÌHÍH éòüÿÿÌÌÌÌÌÌH«H éàüÿÿÌÌÌÌÌÌHqH éÎüÿÿÌÌÌÌÌÌH÷H éGıÿÿÌÌÌÌÌÌHH é    H‰L$H‰T$L‰D$L‰L$ HƒìhfD$ fL$0fT$@f\$PH‹ĞH è9ïÿÿfoD$ foL$0foT$@fo\$PH‹L$pH‹T$xL‹„$€   L‹Œ$ˆ   HƒÄhë ÿàÌÌÌÌÌÌHjG éuÿÿÿÌÌÌÌÌÌHpG écÿÿÿÌÌÌÌÌÌHG éQÿÿÿÌÌÌÌÌÌH<G é?ÿÿÿÌÌÌÌÌÌHG é-ÿÿÿÌÌÌÌÌÌH G éÿÿÿÌÌÌÌÌÌH6H é>üÿÿÌÌÌÌÌÌHÔF é÷şÿÿÌÌÌÌÌÌHºF éåşÿÿÌÌÌÌÌÌHˆG é}ûÿÿÌÌÌÌÌÌÌ@SHƒì 3ÒH‹ÙDB(èn  H‹Ëè|e  H‹ÃHƒÄ [ÃÌÌÌÌÌÌÌHÿ%ùá  ÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌH‰\$H‰t$WHƒì ƒ¹    H‹òH‹ùt'HYhH‹Ëÿµá  H‹ÖH‹ÏèÚ@  H‹Ë‹øÿ—á  ‹ÇëèÆ@  H‹\$0H‹t$8HƒÄ _ÃÌÌÌÌÌÌH‹ÄH‰XH‰hH‰pH‰x AVHƒì ƒ¹    I‹ñI‹èD‹òH‹ùt-HYhH‹ËÿEá  L‹ÎL‹ÅA‹ÖH‹Ïèdh  H‹Ë‹øÿ!á  ‹ÇëèPh  H‹\$0H‹l$8H‹t$@H‹|$HHƒÄ A^ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌH‰\$WHƒì ƒ¹    H‹ùtHƒÁhÿĞà  H‹GHOhH‰G ÿ¶à  ëH‹AH‰A H‹\$03ÀHƒÄ _ÃÌÌÌÌÌÌÌH‰\$H‰t$WHƒì ƒ¹    ‹òH‹ùt&HYhH‹Ëÿvà  ‹ÖH‹Ïèø•  H‹Ë‹øÿYà  ‹Çëèä•  H‹\$0H‹t$8HƒÄ _ÃÌÌÌÌÌÌÌÌH‰\$WHƒì I‹øH‹ÙƒúuL‹Áè£äÿÿ…Ày3Àë2H‹Ëÿrá  ë"…ÒuHå, è@éÿÿH…ÿu9=Í- tèB9  ¸   H‹\$0HƒÄ _ÃÌÌÌÌÌÌHƒì(M‹A8H‹ÊI‹Ñè   ¸   HƒÄ(ÃÌÌÌÌÌÌÌ@SE‹H‹ÚAƒãøL‹ÉAö L‹ÑtA‹@McP÷ØLÑHcÈL#ÑIcÃJ‹H‹C‹HH‹CöDt¶DƒàğLÈL3ÊI‹É[é™óÿÿÌÌÌÌÌÌÌÌÌH‹ÄH‰XH‰hH‰pH‰x AVHƒì M‹Q8H‹òM‹ğH‹éI‹ÑH‹ÎI‹ùA‹HÁãIÚLCèZÿÿÿ‹E$föØ¸   Ò÷ÚĞ…StL‹ÏM‹ÆH‹ÖH‹Íÿíâ  H‹\$0H‹l$8H‹t$@H‹|$HHƒÄ A^ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÿ%Ìâ  ÌÌÌÌÌÌÿ%¸â  ÌÌÌÌÌÌÿ%¼â  ÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌff„     ÿàÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌff„     HƒìL‰$L‰\$M3ÛLT$L+ĞMBÓeL‹%   M;ÓsfAâ ğM› ğÿÿE„M;ÓrñL‹$L‹\$HƒÄÃÌÌÌHƒéé§0  ÌÌÌÌÌÌÌHƒéé—0  ÌÌÌÌÌÌÌHƒéé‡0  ÌÌÌÌÌÌÌHƒé éw0  ÌÌÌÌÌÌÌHƒé(ég0  ÌÌÌÌÌÌÌHƒé8éW0  ÌÌÌÌÌÌÌHƒé@éG0  ÌÌÌÌÌÌÌHƒéHé70  ÌÌÌÌÌÌÌHƒéPé'0  ÌÌÌÌÌÌÌHƒéé§u  ÌÌÌÌÌÌÌHƒéé—u  ÌÌÌÌÌÌÌHƒéé‡u  ÌÌÌÌÌÌÌHƒé éwu  ÌÌÌÌÌÌÌHƒé(égu  ÌÌÌÌÌÌÌHƒé8éWu  ÌÌÌÌÌÌÌHƒé@éGu  ÌÌÌÌÌÌÌHƒéHé7u  ÌÌÌÌÌÌÌHƒéPé'u  ÌÌÌÌÌÌÌHƒéé§‰  ÌÌÌÌÌÌÌHƒéé—‰  ÌÌÌÌÌÌÌHƒéé‡‰  ÌÌÌÌÌÌÌHƒé éw‰  ÌÌÌÌÌÌÌHƒé(ég‰  ÌÌÌÌÌÌÌHƒé8éW‰  ÌÌÌÌÌÌÌHƒé@éG‰  ÌÌÌÌÌÌÌHƒéHé7‰  ÌÌÌÌÌÌÌHƒéPé'‰  ÌÌÌÌÌÌÌ@UHƒì H‹êH‹3É8  À”Á‹ÁHƒÄ ]ÃÌ@UHƒì H‹êH‹3É8  À”Á‹ÁHƒÄ ]ÃÌ@UHƒì H‹êH‹3É8  À”Á‹ÁHƒÄ ]ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ@UHƒì H‹êH‹MPHÁˆ   HƒÄ ]Hÿ%ÈÛ  ÌÌÌÌÌÌÌ@UHƒì H‹êH‰  H‹‹‰•¤   H‰È   ‰U(‹E(=csmàuH‹•È   ‹M(èÜòÿÿ‰E0ëÇE0    ‹E0HƒÄ ]ÃÌ@UHƒì H‹êH‰  H‹‹‰•¨   H‰Ğ   ‰U8‹E8=csmàuH‹•Ğ   ‹M8èˆòÿÿ‰E@ëÇE@    ‹E@HƒÄ ]ÃÌ@UHƒì H‹êH‰  H‹‹‰•¬   H‰Ø   ‰UH‹EH=csmàuH‹•Ø   ‹MHè4òÿÿ‰EPëÇEP    ‹EPHƒÄ ]ÃÌ@UHƒì H‹êH‰   H‹‹‰•°   H‰à   ‰UX‹EX=csmàuH‹•à   ‹MXèàñÿÿ‰E`ëÇE`    ‹E`HƒÄ ]ÃÌ@UHƒì H‹êH‰(  H‹‹‰•´   H‰è   ‰Uh‹Eh=csmàuH‹•è   ‹MhèŒñÿÿ‰EpëÇEp    ‹EpHƒÄ ]ÃÌ@UHƒì H‹êH‰0  H‹‹‰•¸   H‰ğ   ‰Ux‹Ex=csmàuH‹•ğ   ‹Mxè8ñÿÿ‰…€   ë
+Ç…€       ‹…€   HƒÄ ]ÃÌ@UHƒì H‹êH‰8  H‹‹‰•¼   H‰ø   ‰•ˆ   ‹…ˆ   =csmàuH‹•ø   ‹ˆ   èÒğÿÿ‰…   ë
+Ç…       ‹…   HƒÄ ]ÃÌ@UHƒì H‹êH‰@  H‹‹‰•À   H‰   ‰•˜   ‹…˜   =csmàuH‹•   ‹˜   èlğÿÿ‰…    ë
+Ç…        ‹…    HƒÄ ]ÃÌ@UHƒì H‹êƒ½x  w
+Ç° ÿÿÿÿHƒÄ ]ÃÌÌÌÌÌÌÌÌÌÌ@UHƒì H‹êH‹3É8  À”Á‹ÁHƒÄ ]ÃÌ¹8   éßÿÿ¸W €é-ßÿÿH‹H‹@ÿÇÜ  éoßÿÿÌ¸W €éíâÿÿH‹NH‹ÿ©Ü  H‹~H‹Îè)çÿÿH‹÷H…ÿußé©âÿÿ@8«À   „©âÿÿH9«Ø   t&H‹ƒØ   ‹ÍH‹ÈH…Étÿ‚Ø  ÿÅ;«Ğ   vŞH‹K0ÿnØ  énâÿÿ¸@ €éôäÿÿ¾   éåÿÿL‹KøM‹ÆH‹×I‹Ïÿ!Ü  …À„Åäÿÿ…ö…®äÿÿ…Àˆµäÿÿé¡äÿÿ¸W €é°äÿÿ¸W €éMæÿÿ¸€éCæÿÿ¸@ €é9æÿÿ¸8   A9°   IEÀHØékåÿÿ¸€…öDğéæÿÿÌÌÌÌÌÌÌÌÌÌÌÌÌ@SHƒì H‹ÂH‹ÙH‹ÈHT$0ÿ< H‹L$0ÿó< H‹L$0H‰ÿ< H‹ÃHƒÄ [ÃÌÌÌÌÌÌÌÌ@SHƒì Hƒ9 H‹ÙtH‹H‹H‰ÿöÚ  Hƒ; uëHƒÄ [ÃÌÌÌÌÌÌHƒì(H‹	H…ÉtH‹H‹@ÿÛ  HƒÄ(ÃÌÌÌÌÌÌH‰\$H‰t$WHƒì HqøH‹>H‹ßHÁãHÙH…ÿtH[ğH‹ÿn< HƒïuíH‹ÎèPåÿÿH‹\$0H‹ÆH‹t$8HƒÄ _ÃÌÌÌÌÌÌÌÌÌHƒìxE3ÒM…Àu¸@ €ëYH…Éu¸W €ëMH‹A¹   L‰T$@WÀL‰T$8L‰D$0LD$PH‹@0L‰D$(Lıß  fD‰L$ A¹   óD$PL‰T$`ÿHÚ  HƒÄxÃÌÌÌÌÌÌÌH‰\$UVWAVAWH‹ìHƒì@fƒ9HH‹Ú¸   H‹ÑH‰xwL„p  fƒ9‡  „   f9„I  v+f99†(  fƒ9vlfƒ9	tpGf9„  fƒ9„  3ÀA¿ÿ  H‰EàH‰EèH‰EğDpfD91„  fD99„
+  E‹ÎD@HMàÿ; ‹ğ…Àˆ	  H‹Mèéê   ¸
+   éÕ   L‹J3ÉH‰M0M…Ét$I‹LE0HŞ  I‹ÉH‹ ÿCÙ  ‹ø…Àx3H‹M0¸   HH…Ét H‹HU8H‹@8ÿÙ  ‹ø…ÀxH‹E8Hë3ÿHM0èÍıÿÿ‹Çé¤   ¸   f9‚&ÿÿÿfƒ9vA¸   f9t2fƒ9t†
+ÿÿÿfƒ9vfƒ9‡úşÿÿHÇ   ë#¸
+   H‰éäşÿÿH‰;ëHÇ   ë¸   H‰3Àë:H‹IH…Étÿá9 ‹øHƒÇH;3öfD9}àufD‰uàHMàÿ : 3Éÿè9 ‹ÆH‹œ$€   HƒÄ@A_A^_^]ÃÌÌÌÌÌÌH‰\$WHƒìp‹úH‹ÙM…Àu
+¸@ €éä   H…Ûu
+¸W €éÕ   ¸   L‰D$P‰D$`¹ûÿ  ‰D$dH„$   H‰D$XA· fƒè	Ç„$   ıÿÿÿf…Át¸ `  fA… tIHƒd$@ HL$PHƒd$8 LHİ  H‹º   Hƒd$0 A¹   H‰L$(H‹Ëf‰T$ ‹×H‹@0ÿƒ×  …ÀyEHƒd$@ HL$PHƒd$8 LÿÜ  Hƒd$0 º   H‹A¹   H‰L$(H‹Ëf‰T$ ‹×H‹@0ÿ:×  H‹œ$€   HƒÄp_ÃÌÌÌÌÌÌÌÌ@UVWAVAWH‹ìHƒì@H‹òL‹ñH…Òu
+¸W €é>  H‹	ÿ‡8 Iƒ& LMğH‹3ÒH‹ÎH‹@(DBÿÙÖ  H‹LM@ƒe@ HUHƒeH D‹øA¸   H‹AH‹Îÿ°Ö  ‹ø…ÀˆÃ   ƒ}@…°   ‹UHƒú‚¤   ú   v
+¿ €é›   ƒÂş3É‰UHÿØ7 I‰H‹ĞH…Àu¿ €ë{H‹LM@D‹EHH‹ÎH‹@ÿFÖ  ‹ø…ÀxE‹EH9E@t¿@ €ë6H‹LM@A¸   HU8H‹ÎH‹@ÿÖ  ‹ø…Àxƒ}@¿@ €EÇ‹ø…Ày7I‹ÿ‚7 Iƒ& ë¿@ €…ÿyE…ÿxH‹E3ÉH‹UğE3ÀH‹ÎH‹@(ÿÄÕ  ‹ÇHƒÄ@A_A^_^]ÃÌÌÌÌÌÌH‰\$H‰l$VWATHƒì03ÛA·èH‹òH‹ùH…Òu
+¸W €éÏ  ÿ7 …ÀˆÁ  H‹HT$XE3ÉH‹ÎH‹@EAÿYÕ  ƒøA¼@ €ADÄ…Àˆ  D·L$Xf…ítfD;ÍtA‹Äéw  A·ÁfD‰ƒøHwI„ò   ¹   DQ	A;Â‡©   tzƒø„Ç   v$;Á†Ğ   ƒøv[ƒø	t]ƒø
+„½   ƒø„¡   H‹ÖH‰\$hHL$hèŸıÿÿ‹è…À‰»   H‹E3ÉH‹A(IQşH‹ÎEAÿÔ  f‰H‹\$héÒ   ¹   ëifE;ÊHgÙ  LGH‹ÎHùÙ  I‰HEĞÿì4 3Àé©   ƒørƒƒøv&ƒøtƒøt(†nÿÿÿƒøv­ƒøvé_ÿÿÿ¹   ë¹   ë¹   H‹HWD‹ÁE3ÉH‹ÎH‹@ÿÔ  ƒøADÄëJH‹D$h¹   H‰G·D$Xf‰f;Át!¹ÿ  f;ÁtE3ÀD·ÈH‹×H‹ÏÿN5 ‹èëf‰H‹ËÿF5 ‹ÅH‹\$PH‹l$`HƒÄ0A\_^ÃÌÌÌÌÌÌÌÌÌHƒì(H‹ÁH‹	H…ÉtHƒ  H‹H‹@ÿxÓ  HƒÄ(ÃÌÌÌÌÌÌÌH‰\$H‰t$ WHƒì03ÛH‹úH‹ñH…Òu¸W €ëcH9tH‹	ÿ›4 ƒÀë‹Ã‰D$HLL$PH‹HT$HA¸   H‹ÏH‹@ ÿÓ  …Àx&D‹D$HE…ÀtH‹LL$PH‹H‹ÏH‹@ ÿêÒ  ‹Ø‹ÃH‹\$@H‹t$XHƒÄ0_ÃÌÌÌÌÌÌH‰\$H‰t$UWAVH‹ìHƒìPH‹úH‹ñH…Òu
+¸W €éÀ  H‹E3ÉH‹ÖH‹ÏH‹@ EqE‹Æÿ‰Ò  …Àˆ›  fƒ>A^‡÷   „   fD96„"  v)f9†!  fƒ>vkfƒ>	tofƒ>
+„  fƒ>„÷   3ÀA¾ÿ  H‰EàH‰EèH‰EğXf9„ı   fD96„ó   D‹ËD@H‹ÖHMàÿ‚3 ‹ğ…Àˆë   H‹EèéĞ   »   é¦   Hƒe( H‹NH…Ét1H‹LE(H‰Ö  H‹ ÿ¸Ñ  ‹Ø…Àx&H‹M(H…ÉtH‹×ÿ@2 ëH/×  H‹Ïÿ62 ‹ØHM(èOöÿÿ‹Ãé–   fƒ>‚:ÿÿÿfƒ>v0fƒ>t%fƒ>t)fƒ>„oÿÿÿfƒ>†ÿÿÿfƒ>vé	ÿÿÿA‹Şë»   H‹HVE3ÉD‹ÃH‹ÏH‹@ ÿÑ  ë5H‹FH‹×H‰E(HM(è›ıÿÿ‹ğfD9uàuf‰]àHMàÿ2 3Éÿx2 ‹ÆL\$PI‹[ I‹s0I‹ãA^_]ÃÌÌÌÌÌÌÌÌÌL‹ÜI‰[I‰sWHƒì@E·ÈH‹úfE…Àt^fD;tX3ÀH‹ÑIKØI‰CØE3ÀI‰CàI‰Cèÿ2 ‹Ø…ÀxH‹×HL$ è¤ıÿÿ‹Ø¸ÿ  f9D$ u
+¸   f‰D$ HL$ ÿñ1 ‹ÃëèxıÿÿH‹\$PH‹t$XHƒÄ@_ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ@USVWATAUAVAWHl$éHì¨   H‹¨ H3ÄH‰EL‹}E3íM‹ñI‹ğL‹âH‹ùH…Ò„  M…À„  M…É„  M…ÿ„ÿ  »@ €VÕ  óKÕ  óAfE‰)fE‰/H…É„Î  H‹LEßHwÔ  L‰mßH‹ ÿ‚Ï  ‹Ø…Àˆ   H‹MßLM×L‰m×E3À3ÒH‹H‹@ ÿZÏ  ‹Ø…Àˆo  H‹M×HU¯L‰m¯E3ÀH‹H‹€   ÿ1Ï  ‹Ø…Àˆ=  H‹M¯HUïH‹H‹@8ÿÏ  ‹Ø…Àˆ  H‹UïH‹M¯óA$·BfA‰·BfA‰H‹H‹@`ÿÚÎ  H‹LEÏHäÓ  L‰mÏH‹ÏH‹ ÿ¼Î  …Àx$H‹MÏH…ÉtH‹AUL‹ÆH‹@ ÿ›Î  ‹Øé”  H‹LEÇH>Ó  L‰mŸH‹ÏL‰mÇH‹ ÿrÎ  ‹Ø…ÀˆI  H‹MÇHU÷H‹H‹@ÿSÎ  ‹Ø…Àˆ*  H‹M¯LEŸHU÷H‹H‹@0ÿ0Î  ‹Ø…Àˆ  H‹MŸHU§L‰m§H‹H‹@ÿÎ  H‹U§H…Ò„á   A‹ıfD;j4ƒ¿   H‹MŸLE¿‹×H‹H‹@HÿÛÍ  ‹Ø…Àxƒ}¿tH‹U§ÿÇ·B4;ø|Ïé‰   H‹MŸLEÃ‹×H‹H‹@@ÿ¥Í  ‹Ø…ÀxhH‹MŸLE·‹UÃL‰m·H‹H‹@pÿƒÍ  ‹Ø…Àx=H‹M·HUçL‰mçH‹H‹@ÿdÍ  H‹UçH…ÒtH‹M·óH‹H‹€˜   ÿ@Í  HM·èòÿÿH‹U§H‹MŸH‹H‹€˜   ÿÍ  H‹MÇH…ÉtH‹H‹@ÿ	Í  HMŸèÌñÿÿH‹MÏH…ÉtH‹H‹@ÿêÌ  HM¯è­ñÿÿHM×è¤ñÿÿHMßè›ñÿÿ‹Ãë¸@ €H‹MH3ÌèÂÜÿÿHÄ¨   A_A^A]A\_^[]ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌH‰\$H‰T$UVWATAUAVAWH‹ìHƒì`3ÛI‹ğM‹éL‹ÂL‹ùH…É„~  H…ö„u  M…É„l  L‹e`M…ä„_  ‹ÃH‰]@H‰]ĞH9^„>  D‹óH‹şH‹OH…ÉtaH‹H+áÒ  uH‹AH+ÜÒ  H…ÀtH‹EĞëBH‹Gÿ÷Ë  H…À„õ  L‹O L‹ÀH‹UHMÍI‹ÏL‰d$ è;ÿÿÿ‹Ø…ÀˆÕ  3ÛéŠ  H‹ËH‹H…Ò„  E3ÉL‰MàL‰MèL‰Mğ9_(„€  ·G,M‹ÈH‹_ LEàf‰EàI‹ÏI‹IİH‹@ÿuË  3Ò…Àˆ1  ·O,ƒù‡”   „‚   ƒùt}ƒù„  ƒù„¶   ƒù	tƒùtaAğJƒø‡ó   ŠEèˆéé   H‹H…ÉtH‹H‹@ÿ	Ë  3ÒH‹MèH…Ét H‹H¬Ñ  L‹ÃH‹ ÿèÊ  3Ò…À‰¤   H‰éœ   ·Eèf‰é   ƒé„‚   ƒét}ƒétxƒé1tGé·  tù  uhH‹H…ÉtÿÜ+ H‹EèH‰ëQH‹H…Étÿ, H‹EèH‰3ÛH‰]èKë8¹   f9MàuH‹MèH‹Óÿ+ ¹   …Ày3ÀH‰H‰Cë
+‹Eè‰¹   3Û¸ÿ  f9Eà…â   f‰MàéÙ   H;Èt1HM@èuöÿÿI‹$LE@H‹WI‹ÌH‹ ÿõÉ  …ÀˆÖ   H‹GH‰EĞ·_,f…Ûu‹WLEàH‹M@èïÿÿ…Àˆ­   ·]àHMàÿV+ …Àx3ÀH‰EàH‰EèH‰EğI‹LEàL‹MHI‹ÏH‹f‰]àH‹@ÿ…É  3Û…Àyÿ1Å  HMØH‰]Øèîÿÿë‹WLEàH‹M@èñÿÿ…Àx?¸ÿ  f9Eàu	¸   f‰EàHMàÿØ* L‹EHIÿÆK<vHÁçHşH9_t,H‹EĞéëüÿÿ¸ÿ  f9Eàu	¸   f‰EàHMàÿ™* »@ €HM@è·íÿÿ‹Ãë¸W €H‹œ$°   HƒÄ`A_A^A]A\_^]ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌH‰\$ D‰D$‰T$UVWATAUAVAWH‹ìHƒì`E3ÀI‹ñL‹ñH…É„  M…É„„  L‹m`M…í„w  L‹ehM…ä„j  A

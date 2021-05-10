@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky"  >
+  <a class="navbar-brand" href="#"><img src='static/images/Logo.png' height="40px" width="75px"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url '' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Logo Type' %}">Logo Type</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Contact Us' %}">Contact Us</a>
+      </li>
+     <li class="nav-item">
+        <a class="nav-link" href="{% url 'About Us' %}">About Us</a>
+      </li>
+     <li class="nav-item">
+        <a class="nav-link" href="{% url 'Login And Sign Up' %}">SignUp/Login</a>
+      </li>
+     <li class="nav-item ">
+        <a class="nav-link" href="{% url 'Admin Signin' %}">Admin</a>
+      </li>
+    </ul>
+  
+  </div>
+</nav>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <title>Home</title>
+    <style type="text/css">
+      .sticky {
+  position: sticky;
+  top: 0px; /* When the element reaches top: 10px, it becomes fixed. */
+  z-index: 100;
+}
+     body{
+        /* The image used */
+  background-image: url('static/images/Home.jpg');
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-repeat: no-repeat;
+  background-size: cover;
+     }  
+
+
+.card {
+    background-color: #F8F9FA;
+    color: #181819;
+    margin-top: 50px;
+    border: none
+}
+
+.head1 {
+    font-weight: 900;
+    font-size: 30px
+}
+
+.bdr {
+    border-bottom: 1.5px solid #FFB74D;
+    width: 65px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+.card-footer {
+    justify-content: space-between;
+    border: none;
+    background: none;
+    border-bottom: 0.5px solid #9E9E9E
+}
+
+.footer-right>i {
+    margin-left: 15px
+}
+
+.fa-hand-holding-usd {
+    color: #FFB74D
+}
+
+.fa-handshake {
+    color: #FFB74D
+}
+
+.card-title {
+    margin-bottom: .75rem;
+    font-weight: 900;
+    font-size: 15px;
+    margin-top: 1.75rem
+}
+
+.learn-more {
+    color: #FFB74D
+}
+
+.fa-angle-right {
+    margin-left: 10px
+}
+
+.fa-3x {
+    color: #FFB74D
+}
+
+.card-content {
+    padding-right: 40px;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px
+}
+
+.card-content>p {
+    color: #9E9E9E
+}
+
+.heading {
+    position: relative;
+    top: 75px
+}
+
+.follow-text {
+    color: #9E9E9E
+} 
+.subdiv{
+  background-color: #E5F1FB;
+  opacity:0.8; 
+  height: 300px;
+  width: 50%; 
+  border-radius: 4%;
+  margin-top: 3%;
+  margin-left: 25%; 
+  padding: 5%;
+}
+.buton{
+  background-color: #262C44; 
+  color: white;
+  border-radius: 15%;
+  height: 50px;
+}
+@media only screen and (max-width: 900px) {
+  body{
+    align-items: center;
+    text-align: center;
+  }
+ .subdiv{
+  width: 90%;
+  margin:3%;
+  margin-left: 5%;
+  padding: auto;
+  align-items: center;
+text-align: center;
+ }
+ .buton{
+  width: 30%;
+  height: 20%;
+ }
+@media only screen and (max-width: 555px) {
+ .subdiv{
+  width: 93%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 2%;
+  padding: 2%;
+}
+
+}
+@media only screen and (max-width: 350px){
+  .subdiv{
+    height: 400px;
+  }
+  .buton{
+    width: 25%;
+    height:20%;
+  }
+}
+    </style>
+  </head>
+
+  <body>
+   
+
+<div class ="subdiv" >
+  <h2 style="color: #27314A">Logo Type 
+Identification System</h2>
+<p style="color:#27314A ">Logo Type Identification System helps user to identify the types 
+of logo by uploading the any logo image into the system and
+machine learning.</p>
+<br>
+<a href="{% url 'Admin Signin' %}"><button class="buton">>Admin Panel</button></a>
+<a href="{% url 'Login And Sign Up' %}" style="margin-left: 20%;"><button class="buton">>Detect Logo Type</button></a>
+</br>
+</br>
+
+</div>
+
+
+
+<div class='container-fluid'>
+    <div class="card">
+        <div class="heading text-center">
+            <div class="head1">Logo Type Identification System</div>
+            <p class="bdr"></p>
+        </div>
+        <div class="card-body">
+            <div class="row m-0 pt-5">
+                <div class="card col-12 col-md-3">
+                    <div class="card-content"><i class="fas fa-dollar-sign fa-3x"></i>
+                        <div class="card-title"> COST FREE </div>
+                        <p><small>Better to serve humanity then making money</small></p>
+                    </div>
+                </div>
+                <div class="card col-12 col-md-3">
+                    <div class="card-content"> <i class="far fa-handshake fa-3x"></i>
+                        <div class="card-title">MUTUAL UNDERSTANDING</div>
+                        <p><small>Mutual understanding is crucial for providing any service. We understand you and expect fom you the same</small></p>
+                    </div>
+                </div>
+                <div class="card col-12 col-md-3">
+                    <div class="card-content"> <i class="fas fa-mobile-alt fa-3x"></i>
+                        <div class="card-title">EASY TO ACCESS</div>
+                        <p><small>Easy to access through your phone and mobile</small></p>
+                    </div>
+                </div>
+                <div class="card col-12 col-md-3">
+                    <div class="card-content"> <i class="fas fa-user-secret fa-3x"></i>
+                        <div class="card-title"> STAY<br /> SECURE </div>
+                        <p><small>Dont worry your privacy will be kept and your data will not be shared</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

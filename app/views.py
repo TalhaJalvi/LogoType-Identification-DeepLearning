@@ -41,6 +41,7 @@ def LoginAndSignUp(request):
         post=Users()
         post.username= request.POST.get('username')
         post.umail=request.POST.get('email')
+    
         try:
             Users.person.get(umail=post.umail)
             messages.error(request,"Emaill Already Taken")
@@ -62,24 +63,26 @@ def LoginAndSignUp(request):
         
 
 def AdminSignin(request):
-
     return render(request,'AdminLogin.html')
 
 def userDashboard(request):
     if request.method=="POST":
         try:
+            # print(request.POST['umail'])
+            # print(request.POST['upassword'])
+            # user=Users.person.get(umail=request.POST['umail'],upassword=request.POST['upassword'])
+            # print(user.umail)
+            # print(user.upassword)
             userdetails=Users.person.get(umail=request.POST['umail'],upassword=request.POST['upassword'])
             request.session['Email']=userdetails.umail
             email=request.POST['umail']
             #Requesting session so that we can use it to access it in user profile
             usname=userdetails.username
-            return render(request,"userDashboad.html",{'email': email,'name':usname})
+            return render(request,"userDashboad.html")
         except:
             messages.error(request,'Failed to login No Such User exits')
             return render(request,'LoginAndSignUp.html')
-    else:
-        email=request.session['Email']
-        return render(request,"userDashboad.html",{'email': email})
+    
 
     
 

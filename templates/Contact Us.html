@@ -1,35 +1,5 @@
 <!doctype html>
 <html lang="en">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky">
-  <a class="navbar-brand" href="#"><img src="static/images/Logo.png" height="40px" width="75px"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a class="nav-link" href="{% url '' %}">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'Logo Type' %}">Logo Type</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'Contact Us' %}">Contact Us</a>
-      </li>
-     <li class="nav-item">
-        <a class="nav-link" href="{% url 'About Us' %}">About Us</a>
-      </li>
-     <li class="nav-item">
-        <a class="nav-link" href="{% url 'Login And Sign Up' %}">SignUp/Login</a>
-      </li>
-     <li class="nav-item ">
-        <a class="nav-link" href="{% url 'Admin Signin' %}">Admin</a>
-      </li>
-    </ul>
-  
-  </div>
-</nav>
-
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -41,11 +11,7 @@
 
     <title>Contact Us</title>
     <style type="text/css">
-          .sticky {
-  position: sticky;
-  top: 0px; /* When the element reaches top: 10px, it becomes fixed. */
-  z-index: 100;
-}
+         
      body{
         /* The image used */
   background-image: url("static/images/Home.jpg");
@@ -58,11 +24,6 @@
   text-align: center;
      }  
 
-.sticky {
-  position: sticky;
-  top: 0px; /* When the element reaches top: 10px, it becomes fixed. */
-  z-index: 100;
-}
 .wrapper{
 margin-top: 2%;
 margin-left: 25%;
@@ -158,63 +119,6 @@ margin-right: 25%;
     margin-left: auto
 }
 
-.card-footer {
-    justify-content: space-between;
-    border: none;
-    background: none;
-    border-bottom: 0.5px solid #9E9E9E
-}
-
-.footer-right>i {
-    margin-left: 15px
-}
-
-.fa-hand-holding-usd {
-    color: #FFB74D
-}
-
-.fa-handshake {
-    color: #FFB74D
-}
-
-.card-title {
-    margin-bottom: .75rem;
-    font-weight: 900;
-    font-size: 15px;
-    margin-top: 1.75rem
-}
-
-.learn-more {
-    color: #FFB74D
-}
-
-.fa-angle-right {
-    margin-left: 10px
-}
-
-.fa-3x {
-    color: #FFB74D
-}
-
-.card-content {
-    padding-right: 40px;
-    padding-left: 30px;
-    padding-bottom: 10px;
-    padding-top: 10px
-}
-
-.card-content>p {
-    color: #9E9E9E
-}
-
-.heading {
-    position: relative;
-    top: 75px
-}
-
-.follow-text {
-    color: #9E9E9E
-} 
 
 @media only screen and (max-width: 650px){
 .wrapper{
@@ -260,44 +164,6 @@ margin-right: 25%;
   </form>
 </div>
 
-
-
-<div class='container-fluid'>
-    <div class="card">
-        <div class="heading text-center">
-            <div class="head1">Logo Type Identification System</div>
-            <p class="bdr"></p>
-        </div>
-        <div class="card-body">
-            <div class="row m-0 pt-5">
-                <div class="card col-12 col-md-3">
-                    <div class="card-content"><i class="fas fa-dollar-sign fa-3x"></i>
-                        <div class="card-title"> COST FREE </div>
-                        <p><small>Better to serve humanity then making money</small></p>
-                    </div>
-                </div>
-                <div class="card col-12 col-md-3">
-                    <div class="card-content"> <i class="far fa-handshake fa-3x"></i>
-                        <div class="card-title">MUTUAL UNDERSTANDING</div>
-                        <p><small>Mutual understanding is crucial for providing any service. We understand you and expect fom you the same</small></p>
-                    </div>
-                </div>
-                <div class="card col-12 col-md-3">
-                    <div class="card-content"> <i class="fas fa-mobile-alt fa-3x"></i>
-                        <div class="card-title">EASY TO ACCESS</div>
-                        <p><small>Easy to access through your phone and mobile</small></p>
-                    </div>
-                </div>
-                <div class="card col-12 col-md-3">
-                    <div class="card-content"> <i class="fas fa-user-secret fa-3x"></i>
-                        <div class="card-title"> STAY<br /> SECURE </div>
-                        <p><small>Dont worry your privacy will be kept and your data will not be shared</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
 </div>
     <!-- Optional JavaScript; choose one of the two! -->
 

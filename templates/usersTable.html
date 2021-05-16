@@ -1,0 +1,43 @@
+{% extends 'adminBaseTemplate.html' %}
+
+{% block maincontent %}
+<br>
+<br>
+   <!--  sale analytics start -->
+<div class="col-xl-12 col-md-12">
+ <div class="card">
+ <div class="card-header">
+ <h5>Users Data Only</h5>
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone No</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for user in users  %}
+
+
+    <tr>
+      <th scope="row">{{user.id}}</th>
+      <td>{{user.umail}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.uphone}}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+                                                        
+ </div>
+
+ </div>
+ </div>
+<div>
+ 
+</div>
+
+
+{% endblock maincontent %}

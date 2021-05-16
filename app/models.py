@@ -30,13 +30,15 @@ class ContactusDB(models.Model):
 
 class adminuser(models.Model):
     #Ceating columns in our table
-    ausername=models.CharField(max_length=50)
-    apassword=models.CharField(max_length=10)
-    amail=models.EmailField(max_length=50)
-    aphone=models.CharField(max_length=15)
+    username=models.CharField(max_length=50)
+    password=models.CharField(max_length=10)
+    email=models.EmailField(max_length=50)
+    phone=models.CharField(max_length=15)
 
     #Giving model manager name which we will use to access data base
     adminobject=models.Manager()
     class Meta:
         #This will create table with above fields with name below users
         db_table="admin_user"
+
+    

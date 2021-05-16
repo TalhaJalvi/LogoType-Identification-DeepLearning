@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 #Importing logout for logout function
 from django.contrib.auth import logout
-from app.models import Users,ContactusDB
+from app.models import Users,ContactusDB,adminuser
 from django.contrib import messages
 
 #For uploading files to server we need
@@ -10,7 +10,7 @@ from django.core.files.storage import FileSystemStorage
 # Create your views here.
 def home(request):
     #Before calling home ending any use session using logout(request) function this won't through any error
-    #if no user has loggin
+    #if no user has loged in
     logout(request)
     return render(request,'Home.html')
 
@@ -62,8 +62,8 @@ def LoginAndSignUp(request):
         return render(request,'LoginAndSignUp.html')
         
 
-def AdminSignin(request):
-    return render(request,'AdminLogin.html')
+# def AdminSignin(request):
+#     return render(request,'AdminLogin.html')
 
 def userDashboard(request):
     if request.method=="POST":
@@ -82,6 +82,9 @@ def userDashboard(request):
         except:
             messages.error(request,'Failed to login No Such User exits')
             return render(request,'LoginAndSignUp.html')
+    else:
+        email = request.session['Email']
+        return render(request,'userDashboad.html')
     
 
     
@@ -109,6 +112,10 @@ def room(request,room_name):
 def Readmore(request):
     return render(request,'Readmore.html')    
 
+def admin(request):
+    return render(request,'AdminLogin.html')
+
+    
 def userprofile(request):
     email=request.session['Email']
     try:
@@ -190,3 +197,82 @@ def predictimage(request):
         print("Wordmark")
 
     return render(request,'userDashboad.html',{'filepathname':filepathname})
+
+def adminHome(request):
+    #First Getting text from textfield
+    if request.method == "POST":
+        username=request.POST['username']
+        password=request.POST['password']
+
+        # print(username)
+        # print(password)
+        try:
+            admins = adminuser.adminobject.get(username=username,password=password)
+            request.session['email'] = admins.email
+            name = admins.username
+            email=request.session['email']
+            return render(request,'adminHome.html',{'email':email,'name':name})
+        except:
+            messages.error(request,'Wrong admin Info!!')
+            return render(request,'AdminLogin.html')
+    
+    else:
+        email=request.session['email']
+        try:
+            admins = adminuser.adminobject.get(email=email)
+            name = admins.username
+            return render(request,'adminHome.html',{'email':email,'name':name})
+        except:
+            messages.error(request,'Wrong admin Info!!')
+            return render(request,'AdminLogin.html')
+
+
+def adminprofile(request):
+    email=request.session['email']
+    try:
+        userdetails=adminuser.adminobject.get(email=email)
+        usname=userdetails.username
+        upassword=userdetails.password
+        uphone=userdetails.phone
+        return render(request,"admin_profile.html",{'email': email,'name':usname,'password':upassword,'phone':uphone})
+    except:
+        messages.error(request,'Failed to get data from database!!')
+        return render(request,'adminHome.html')
+
+
+def updateadmin(request):
+    if request.method=="POST":
+        try:
+           print(request.POST['email'])
+           print()
+           adminuser.adminobject.filter(email=request.POST['email']).update(username=request.POST['name'],password=request.POST['password'])
+           messages.success(request, 'Your profile was updated successfully.')
+           #Now to get new contents which are updated from database
+           userdetails=adminuser.adminobject.get(email=request.POST['email'])
+           usname=userdetails.username
+           upassword=userdetails.password
+           uphone=userdetails.phone
+           return render(request,"admin_profile.html",{'email': request.POST['email'],'name':usname,'password':upassword})
+  
+        except:
+            messages.error(request,'Failed to update profile')
+            #Now to get new contents which are updated from database
+            userdetails=adminuser.adminobject.get(email=request.POST['email'])
+            usname=userdetails.username
+            upassword=userdetails.password
+            uphone=userdetails.phone
+            return render(request,"admin_profile.html",{'email': request.POST['email'],'name':usname,'password':upassword,'phone':uphone})
+    else:
+        print("Method is not POST")
+
+def userstable(request):
+    #Fetching all users data from database 
+    try:
+        data =  Users.person.all()  
+        email=request.session['email']
+        admins = adminuser.adminobject.get(email=email)
+        name = admins.username  
+        return render(request,'usersTable.html',{'users':data,'email':email,'name':name})
+    except:
+        messages.error(request,'Error while opening your page!!')
+        return render(request,'adminHome.html',{'email':email,'name':name})

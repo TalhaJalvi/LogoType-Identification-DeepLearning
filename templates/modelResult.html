@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <title>Logo Types explained</title>
+    <style type="text/css">
+      .sticky {
+  position: sticky;
+  top: 0px; /* When the element reaches top: 10px, it becomes fixed. */
+  z-index: 100;
+}
+     body{
+        /* The image used */
+  background-image: url('static/images/Home.jpg');
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-repeat: no-repeat;
+  background-size: cover;
+     }  
+
+
+.card {
+    background-color: #F8F9FA;
+    color: #181819;
+    margin-top: 50px;
+    border: none
+}
+
+.head1 {
+    font-weight: 900;
+    font-size: 30px
+}
+
+.bdr {
+    border-bottom: 1.5px solid #FFB74D;
+    width: 65px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+.card-footer {
+    justify-content: space-between;
+    border: none;
+    background: none;
+    border-bottom: 0.5px solid #9E9E9E
+}
+
+.footer-right>i {
+    margin-left: 15px
+}
+
+.fa-hand-holding-usd {
+    color: #FFB74D
+}
+
+.fa-handshake {
+    color: #FFB74D
+}
+
+.card-title {
+    margin-bottom: .75rem;
+    font-weight: 900;
+    font-size: 15px;
+    margin-top: 1.75rem
+}
+
+.learn-more {
+    color: #FFB74D
+}
+
+.fa-angle-right {
+    margin-left: 10px
+}
+
+.fa-3x {
+    color: #FFB74D
+}
+
+.card-content s{
+    padding-right: 40px;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px
+}
+
+.card-content>p {
+    color: #9E9E9E
+}
+
+.heading {
+    position: relative;
+    top: 75px
+}
+
+.follow-text {
+    color: #9E9E9E
+} 
+.article{
+    background-color:#F8F9FA;
+    width:95%;
+    margin:2%;
+    padding:2%;
+}
+h2{
+    color:#FFB74D;
+}
+.images{
+    display:flex;
+     /* Center and scale the image nicely */
+     background-repeat: no-repeat;
+     background-size: cover;
+     margin-left:23%;
+}
+.images img{
+    padding:2%;
+
+}
+@media only screen and (max-width: 1000px) {
+.images{
+    margin-left:18%;
+}    
+}
+@media only screen and (max-width: 920px) {
+.images{
+    margin-left:13%;
+}    
+}
+@media only screen and (max-width: 850px) {
+.images{
+    margin-left:8%;
+}  
+}
+@media only screen and (max-width: 760px) {
+.images{
+    margin-left:6%;
+} 
+}
+
+@media only screen and (max-width: 700px) {
+.images{
+    margin-left:15%;
+} 
+.images img{
+    width:150px;
+    height:150px;
+}
+}
+
+@media only screen and (max-width: 600px) {
+.images{
+    margin-left:10%;
+} 
+}
+
+@media only screen and (max-width: 550px) {
+.images{
+    margin-left:7%;
+} 
+}
+
+@media only screen and (max-width: 550px) {
+.images{
+    flex-direction:column;
+    margin-left:15%;
+} 
+.images img{
+    width:300px;
+    height:300px;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+.images{
+    margin-left:12%;
+} 
+}
+
+@media only screen and (max-width: 390px) {
+.images{
+    margin-left:9%;
+} 
+}
+
+@media only screen and (max-width: 370px) {
+.images{
+    margin-left:6%;
+} 
+}
+
+@media only screen and (max-width: 370px) {
+.images{
+    margin-left:3%;
+} 
+}
+</style>
+  </head>
+
+  <body>
+  <div class="article">
+  <!-- Result section will be shown here -->
+<div class="section">
+  <center><h2><u>Detected Logo Type:</u> {{result}}</h2></center>
+  <center> <h2><u>Uploaded Image</u></h2></center>
+  <center><img src="{{testimage}}" height="150" width="150" alt="uploaded Image"></center>
+
+  <!-- This form to collect data which we will send to database -->
+  <center>
+  <form method = "POST" action = "userReview">
+  {% csrf_token %}
+  Are you satisfied with answer?
+  <label for="yes"> Yes
+  <input type="radio" value = "Yes" name="response"> 
+  </label>
+
+  <label for="No">No
+  <input type="radio" value = "No" name="response">
+  </label>
+
+  
+  <label for="No">Other
+  <input type="radio" value = "No" name="response">
+  </label>
+  <input type = "hidden" name = "filepath" value="{{testimage}}">
+  <input type = "hidden" name = "result" value="{{result}}">
+
+  <input type="submit" value="Submit" name="submit">
+</form>
+</center>
+
+</div>
+
+  <!-- Lettermark starts here-->
+  <div class="section">
+  <h2><u>Monogram (Lettermark)</u></h2>
+  </br>
+  <p>Monogram logos or lettermarks are logos that consist of letters, usually brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve each turned to using their initials for brand-identification purposes. So it makes perfect sense for them to use monograms—sometimes called lettermark logos—to represent their organizations.
+
+A lettermark is a typography-based logo that’s comprised of a few letters, usually a company’s initials. The lettermark is all about simplicity. By utilizing just a few letters lettermark logos are effective at streamlining any company brand if they have a long name. For example, how much easier is it to say—and remember—NASA versus the National Aeronautics and Space Administration?
+</p>
+<div class="images">
+<img  src="static\images\articlelm1.jpg" height="200px" width="200px"> 
+<img  src="static\images\articlelm2.jpg" height="200px" width="200px"> 
+<img  src="static\images\Logo3.jpg" height="200px" width="200px">
+</div>
+<p>
+Because the focus is on initials, the font you choose (or create) is very important to make sure your logo is not only on-theme with what your company does, but also legible when you print on business cards. Also, if you’re not an established business already you may want to add your full business name below the logo so people can begin to learn who you are right away.
+</p>
+</div>
+<!--section div ends above-->
+<!--Lettermark ends here-->
+
+
+  <!-- wordmark starts here-->
+  <div class="section">
+  <h2><u>Wordmarks (or logotypes)</u></h2>
+
+  </br>
+  <p>Similar to a lettermark, a wordmark or logotype is a font-based logo that focuses on a business’ name alone. Think Visa and Coca-Cola. Wordmark logos work really well when a company has a succinct and distinct name. Google’s logo is a great example of this. The name itself is catchy and memorable so, when combined with strong typography, the logo helps create strong brand recognition.
+</p>
+<div class="images">
+<img  src="static\images\articlewm1.jpg" height="200px" width="200px"> 
+<img  src="static\images\articlewm2.jpg" height="200px" width="200px"> 
+<img  src="static\images\Logo4.jpg" height="200px" width="200px">
+</div>
+<p>
+Also, like with a lettermark logo, typography will be an important decision. Since the focus will be on your name, you’ll want to pick a font—or create a font—that captures the essence of what your business does. For example, fashion labels tend to use clean, elegant fonts that feel high-end, while legal or government agencies almost always stick to traditional, “heavier” text that feels secure.
+</p>
+<h2>When to use lettermark and wordmark logos:</h2>
+<ol>
+<li>Consider a lettermark logo if your business happens to have a long name. Condensing the business name into initials will help simplify your design and likewise customers will have an easier time recalling your business and your logo.
+</li>
+<li>A wordmark is a good decision if you’re a new business and need to get your name out there, just make sure that name is short enough to take advantage of the design. Anything too long can look too cluttered.
+</li>
+<li>A wordmark logo is a good idea if you have a distinct business name that will stick in customers’ minds. Having your name in a great, designed font will make your brand all the stickier.
+</li>
+<li>Both lettermark and wordmark logos are easy to replicate across marketing material and branding thus making them highly adaptable options for a new, and developing, business.
+</li>
+<li>Remember that you’ll want to be scrupulous when creating a lettermark or a wordmark. Your business name in a font alone likely won’t be distinct enough to capture the nuance of your brand. So make sure you hire a professional who’ll have an eye for detail.
+</li>
+</ol>
+</div>
+<!--section div ends above-->
+<!--wordmark ends here-->
+
+
+  <!-- Pictorial starts here-->
+  <div class="section">
+  <h2><u> Pictorial marks (or logo symbols)</u></h2>
+  </br>
+  <p>A pictorial mark (sometimes called brand mark or logo symbol) is an icon—or graphic-based logo. It’s probably the image that comes to mind when you think “logo”: the iconic Apple logo, the Twitter bird, the Target bullseye. Each of these companies’ logos is so emblematic, and each brand so established, that the mark alone is instantly recognizable. A true brand mark is only an image. Because of this, it can be a tricky logo type for new companies, or those without strong brand recognition, to use.
+</p>
+<div class="images">
+<img  src="static\images\Logo2.jpg" height="200px" width="200px"> 
+<img  src="static\images\articlepi1.jpg" height="200px" width="200px"> 
+<img  src="static\images\articlepi2.jpg" height="200px" width="200px">
+</div>
+<p>
+The biggest thing to consider when deciding to go with a pictorial mark is what image to choose. This is something that will stick with your company its entire existence. You need to think about the broader implications of the image you choose: do you want to play on your name (like John Deere does with their deer logo)? Or are you looking to create deeper meaning (think how the Snapchat ghost tells us what the product does)? Or do you want to evoke an emotion (as the World Wildlife foundation does with their stylized image of a panda—an adorable and endangered species)?
+</p>
+</div>
+<!--section div ends above-->
+<!--Pictorial ends here-->
+
+  <!-- Abstract starts here-->
+  <div class="section">
+  <h2><u>Abstract logo marks</u></h2>
+  </br>
+  <p>An abstract mark is a specific type of pictorial logo. Instead of being a recognizable image—like an apple or a bird—it’s an abstract geometric form that represents your business. A few famous examples include the BP starburst-y logo, the Pepsi divided circle and the strip-y Adidas flower. Like all logo symbols, abstract marks work really well because they condense your brand into a single image. However, instead of being restricted to a picture of something recognizable, abstract logos allow you to create something truly unique to represent your brand.
+</p>
+<div class="images">
+<img  src="static\images\articleab1.jpg" height="200px" width="200px"> 
+<img  src="static\images\Logo7.jpg" height="200px" width="200px"> 
+<img  src="static\images\articleab2.jpg" height="200px" width="200px">
+</div>
+<p>
+The benefit of an abstract mark is that you’re able to convey what your company does symbolically, without relying on the cultural implications of a specific image. Through color and form, you can attribute meaning and cultivate emotion around your brand. (As an example, think about how the Nike swoosh implies movement and freedom).
+</p>
+</div>
+<!--section div ends above-->
+<!--Abstract ends here-->
+
+
+  <!-- Mascots starts here-->
+  <div class="section">
+  <h2><u>Mascots</u></h2>
+  </br>
+  <p>Mascot logos are logos that involve an illustrated character. Often colorful, sometimes cartoonish, and most always fun, the mascot logo is a great way to create your very own brand spokesperson—er, spokes-character(?).
+</p>
+<div class="images">
+<img  src="static\images\articlems1.jpg" height="200px" width="200px"> 
+<img  src="static\images\Logo5.jpg" height="200px" width="200px"> 
+<img  src="static\images\articlems2.jpg" height="200px" width="200px">
+</div>
+<p>
+A mascot is simply an illustrated character that represents your company. Think of them as the ambassador for your business. Famous mascots include the Kool-Aid Man, KFC’s Colonel and Planter’s Mr. Peanut. Mascots are great for companies that want to create a wholesome atmosphere by appealing to families and children. Think of all those mascots at sporting events and the great dynamic they create by getting involved with the audience!
+</p>
+<h2>When to use picture and symbol logos:</h2>
+<ol>
+<li>A pictorial mark alone can be tricky. It’s effective if you already have an established brand but that’s not a hard and strict rule. You can use brandmarks to your advantage to convey what your business does graphically if your name is too long, and they can also be used effectively to convey a desired idea or emotion.
+</li>
+<li>Pictorial and abstract marks also work quite well for global commerce if, for example, a business name doesn’t lend itself well to translation.
+</li>
+<li>A pictorial mark however may not be the best idea if you anticipate changes to your business model in the future. You may start off selling pizzas and use a pizza in your logo but what happens when you start to selling sandwiches or burgers, or even produce?
+</li>
+<li>Abstract marks allow you to create a completely unique image for your business, but are best left to design professionals who understand how color, shape and structure combine to create meaning.
+</li>
+<li>Think about creating a mascot if you are trying to appeal to young children or families. One big benefit of a mascot is it can encourage customer interaction so it’s a great tool for social media marketing as well as real world marketing events. I mean, who doesn’t want to take a selfie with the Pillsbury Doughboy?
+</li>
+<li>Remember that a mascot is only one part of a successful logo and brand, and you may not be able to use it across all your marketing material. For example, a highly detailed illustration may not print well on a business card. So put some consideration in the next type of logo design below, the combination mark.
+</li>
+</ol>
+</div>
+<!--section div ends above-->
+<!--Mascots ends here-->
+
+  <!-- combination starts here-->
+  <div class="section">
+  <h2><u>The combination mark</u></h2>
+  </br>
+  <p>A combination mark is a logo comprised of a combined wordmark or lettermark and a pictorial mark, abstract mark, or mascot. The picture and text can be laid out side-by-side, stacked on top of each other, or integrated together to create an image. Some well known combination mark logos include Doritos, Burger King and Lacoste.
+</p>
+<div class="images">
+<img  src="static\images\articlecm1.jpg" height="200px" width="200px"> 
+<img  src="static\images\articlecm2.jpg" height="200px" width="200px"> 
+<img  src="static\images\articlecm3.jpg" height="200px" width="200px">
+</div>
+<p>
+A combination mark is a logo comprised of a combined wordmark or lettermark and a pictorial mark, abstract mark, or mascot. The picture and text can be laid out side-by-side, stacked on top of each other, or integrated together to create an image. Some well known combination mark logos include Doritos, Burger King and Lacoste.
+</p>
+</div>
+<!--section div ends above-->
+<!--combination ends here-->
+
+
+  <!-- emblem starts here-->
+  <div class="section">
+  <h2><u>The emblem</u></h2>
+  </br>
+  <p>An emblem logo consists of font inside a symbol or an icon; think badges, seals and crests. These logos tend to have a traditional appearance about them that can make a striking impact, thus they are often the go-to choice for many schools, organizations or government agencies. The auto industry is also very fond of emblem logos. While they have a classic style, some companies have effectively modernized the traditional emblem look with a logo designs fit for the 21st century (think of Starbucks’ iconic mermaid emblem, or Harley-Davidson’s famous crest).
+</p>
+<div class="images">
+<img  src="static\images\articleem1.jpg" height="200px" width="200px"> 
+<img  src="static\images\articleem2.jpg" height="200px" width="200px"> 
+<img  src="static\images\Logo6.jpg" height="200px" width="200px">
+</div>
+<p>
+But because of their lean towards higher detail, and the fact that the name and symbol are rigidly entwined, they can be less versatile than the aforementioned types of logos. An intricate emblem design won’t be easy to replicate across all branding. For business cards, a busy emblem may shrink so small before it becomes too difficult to read. Also, if you plan on embroidering this type of logo on hats or shirts, then you’ll really have to create a design that is on the simple side or it just won’t be possible. So as a rule keep your design uncomplicated and you’ll walk away with a strong, bold look that’ll make you look like the consummate professional.
+</p>
+<h2>When to use a combination mark or emblem logos:</h2>
+<ol>
+<li>A combination mark is a great choice for pretty much any business out there. It’s versatile, usually highly unique, and the most popular choice of logo among prominent companies.
+</li>
+<li>An emblem’s traditional look might be favored by lots of public agencies and schools but it can also serve any up-and-coming private business quite well, especially those in the food and beverage industry: think beer labels and coffee cups (Starbucks!). But remember to play it safe when it comes to detail. You still want a design you’ll be able to print neatly across all of your marketing material.
+</li>
+</ol>
+
+</div>
+<!--section div ends above-->
+<!--emblem ends here-->
+
+  </div> 
+  <!-- article div ends here-->
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

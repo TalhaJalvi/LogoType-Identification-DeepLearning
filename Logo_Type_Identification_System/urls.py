@@ -43,7 +43,10 @@ urlpatterns = [
      path('adminHome',views.adminHome, name="adminHome"),
      path('admin_profile',views.adminprofile,name='admin_profile'),
      path('updateAdmin',views.updateadmin,name='updateAdmin'),
-     path('usersTables',views.userstable,name='usersTable'),
+     path('usersTable',views.userstable,name='usersTable'),
+     path('contactusMessages',views.contactus_table_admin,name='contactusMessages'),
+     path('userReview',views.userReview,name='userReview'),
+     path('imagesuploadedAndTested',views.imagesuploadedAndTested,name='imagesuploadedAndTested'),
 
      
 ]

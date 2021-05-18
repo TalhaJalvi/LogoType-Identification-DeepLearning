@@ -1,11 +1,13 @@
+from django.http import response
 from django.shortcuts import redirect, render
 #Importing logout for logout function
 from django.contrib.auth import logout
-from app.models import Users,ContactusDB,adminuser
+from app.models import Users,ContactusDB,adminuser,user_response
 from django.contrib import messages
 
 #For uploading files to server we need
 from django.core.files.storage import FileSystemStorage
+import datetime
 
 # Create your views here.
 def home(request):
@@ -178,25 +180,31 @@ def predictimage(request):
     x=x.reshape(1,64,64,3)
     predictions = model.predict(x)
     print(predictions)
-
     # Generate arg maxes for predictions
     classes = np.argmax(predictions, axis = 1)
     print(classes)
 
 
-
+    print(testimage)
 
 
     if(classes == 0):
         print("Combination")
+        result = "Combination"
     elif(classes==1):
         print("Emblem")  
+        result = "Emblem"
     elif(classes==2):
         print("Lettermark")
+        result = "Lettermark"
     elif(classes==3):
         print("Wordmark")
+        result = "Wordmark"
 
-    return render(request,'userDashboad.html',{'filepathname':filepathname})
+    #U
+
+   
+    return render(request,'modelResult.html',{'testimage':testimage,'result':result})
 
 def adminHome(request):
     #First Getting text from textfield
@@ -211,7 +219,16 @@ def adminHome(request):
             request.session['email'] = admins.email
             name = admins.username
             email=request.session['email']
-            return render(request,'adminHome.html',{'email':email,'name':name})
+
+            #For statistical graphs
+            totalimgtested = user_response.userresponse_model_obj.all().count()
+            successfultests = user_response.userresponse_model_obj.filter(user_response = "Yes").count()
+            failedtests = user_response.userresponse_model_obj.filter(user_response = "No").count()
+
+            # print(totalimgtested)
+            # print(successfultests)
+            # print(failedtests)
+            return render(request,'adminHome.html',{'email':email,'name':name,'totalimgtested':totalimgtested,'successfultests':successfultests,'failedtests':failedtests})
         except:
             messages.error(request,'Wrong admin Info!!')
             return render(request,'AdminLogin.html')
@@ -221,7 +238,14 @@ def adminHome(request):
         try:
             admins = adminuser.adminobject.get(email=email)
             name = admins.username
-            return render(request,'adminHome.html',{'email':email,'name':name})
+            totalimgtested = user_response.userresponse_model_obj.all().count()
+            successfultests = user_response.userresponse_model_obj.filter(user_response = "Yes").count()
+            failedtests = user_response.userresponse_model_obj.filter(user_response = "No").count()
+
+            # print(totalimgtested)
+            # print(successfultests)
+            # print(failedtests)
+            return render(request,'adminHome.html',{'email':email,'name':name,'totalimgtested':totalimgtested,'successfultests':successfultests,'failedtests':failedtests})
         except:
             messages.error(request,'Wrong admin Info!!')
             return render(request,'AdminLogin.html')
@@ -267,12 +291,81 @@ def updateadmin(request):
 
 def userstable(request):
     #Fetching all users data from database 
+    email=request.session['email']
+    admins = adminuser.adminobject.get(email=email)
+    name = admins.username  
     try:
         data =  Users.person.all()  
-        email=request.session['email']
-        admins = adminuser.adminobject.get(email=email)
-        name = admins.username  
         return render(request,'usersTable.html',{'users':data,'email':email,'name':name})
     except:
         messages.error(request,'Error while opening your page!!')
-        return render(request,'adminHome.html',{'email':email,'name':name})
+        totalimgtested = user_response.userresponse_model_obj.all().count()
+        successfultests = user_response.userresponse_model_obj.filter(user_response = "Yes").count()
+        failedtests = user_response.userresponse_model_obj.filter(user_response = "No").count()
+
+            # print(totalimgtested)
+            # print(successfultests)
+            # print(failedtests)
+        return render(request,'adminHome.html',{'email':email,'name':name,'totalimgtested':totalimgtested,'successfultests':successfultests,'failedtests':failedtests})
+
+
+def contactus_table_admin(request):
+    #Fetching all users data from database 
+    email=request.session['email']
+    admins = adminuser.adminobject.get(email=email)
+    try:
+        data =  ContactusDB.contactdbobject.all()  
+        name = admins.username  
+        return render(request,'contactUsMessages.html',{'data':data,'email':email,'name':name})
+    except:
+        messages.error(request,'Error while opening your page!!')
+        totalimgtested = user_response.userresponse_model_obj.all().count()
+        successfultests = user_response.userresponse_model_obj.filter(user_response = "Yes").count()
+        failedtests = user_response.userresponse_model_obj.filter(user_response = "No").count()
+
+            # print(totalimgtested)
+            # print(successfultests)
+            # print(failedtests)
+        return render(request,'adminHome.html',{'email':email,'name':name,'totalimgtested':totalimgtested,'successfultests':successfultests,'failedtests':failedtests})
+
+
+def userReview(request):
+    if request.method == "POST":
+        #Getting values from form in variables
+        try:
+            imgpath = request.POST['filepath']
+            email = request.session['Email']
+            date = datetime.date.today()
+            userresponse = request.POST['response']
+            predicted = request.POST['result']
+
+            #Now checking that variables are getting values from form
+            # print(imgpath)
+            # print(email)
+            # print(date)
+            # print(userresponse)
+            # print(predicted)
+
+            #Before rendering template firstly sending data to database model
+            post = user_response()
+            post.user_Email = email
+            post.user_response = userresponse
+            post.prediction_made = predicted
+            post.image_path = imgpath
+            post.date = date
+            post.save()
+            messages.success(request, 'Your review was successfully submitted.')
+        except:
+            messages.error(request,'Error while submitting your responser')     
+        return render(request,'userDashboad.html')
+
+
+
+def imagesuploadedAndTested(request):
+    #Firstly accessing data from database
+    try:
+        uploadimgdata = user_response.userresponse_model_obj.all()
+        return render(request,'imagesuploadedAndTested.html',{'uploadimgdata':uploadimgdata})
+    except:
+        messages.error(request,"Failed to Fetch Data from database")
+        return render(request,'imagesuploadedAndTested.html')

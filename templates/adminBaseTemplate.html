@@ -16,6 +16,10 @@
       <meta name="description" content="Admin Page from where admin can manage website and users" />
       <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
       <meta name="author" content="BCS-23" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
       <!-- Favicon icon -->
       <link rel="icon" href="static/assets/images/favicon.ico" type="image/x-icon">
     <!-- Google font-->
@@ -36,7 +40,20 @@
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="static/assets/css/style.css">
-
+<style type="text/css">
+@media only screen and (max-width: 600px){
+img{
+    width:100px;
+    height:100px;
+}
+}
+@media only screen and (max-width: 450px){
+img{
+    width:30px;
+    height:30px;
+}
+}
+</style>
   </head>
 
   <body>
@@ -202,11 +219,11 @@
                                           <i class="ti-user"></i> Profile
                                       </a>
                                   </li>
-                                  <li class="waves-effect waves-light">
+                                  {% comment %} <li class="waves-effect waves-light">
                                       <a href="email-inbox.html">
                                           <i class="ti-email"></i> My Messages
                                       </a>
-                                  </li>
+                                  </li> {% endcomment %}
                                   <li class="waves-effect waves-light">
                                       <a href="{% url '' %}">
                                           <i class="ti-layout-sidebar-left"></i> Logout
@@ -274,21 +291,21 @@
                                           </a>
                                       </li>
                                       <li class=" ">
-                                          <a href="button.html" class="waves-effect waves-dark">
+                                          <a href="{% url 'contactusMessages' %}" class="waves-effect waves-dark">
                                               <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                               <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Contact us</span>
                                               <span class="pcoded-mcaret"></span>
                                           </a>
                                       </li>
-                                      <li class=" ">
+                                      {% comment %} <li class=" ">
                                           <a href="tabs.html" class="waves-effect waves-dark">
                                               <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                               <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Chat</span>
                                               <span class="pcoded-mcaret"></span>
                                           </a>
-                                      </li>
+                                      </li> {% endcomment %}
                                       <li class=" ">
-                                          <a href="label-badge.html" class="waves-effect waves-dark">
+                                          <a href="{% url 'imagesuploadedAndTested' %}" class="waves-effect waves-dark">
                                               <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                               <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Images uploaded & Tested</span>
                                               <span class="pcoded-mcaret"></span>
@@ -297,7 +314,7 @@
                                   </ul>
                               </li>
                           </ul>
-                          <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Forms &amp; Tables</div>
+                          {% comment %} <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Forms &amp; Tables</div>
                           <ul class="pcoded-item pcoded-left-item">
                               <li>
                                   <a href="form-elements-component.html" class="waves-effect waves-dark">
@@ -319,9 +336,9 @@
                                   </ul>
                               </li>
                           </ul>
-                      </div>
+                      </div> {% endcomment %}
                   </nav>
-                  <div class="pcoded-content">
+                  <div  class="pcoded-content">
                   {% block maincontent %}<!-- In every page this has its own content -->{% endblock maincontent %}
                                                     </div>
                                     <!-- Page-body end -->

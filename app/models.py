@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.base import Model
 
 # Create your models here.
 #Models are simply database tables, We can create multiple of them
@@ -42,3 +43,16 @@ class adminuser(models.Model):
         db_table="admin_user"
 
     
+class user_response(models.Model):
+    auto_increment_id = models.AutoField(primary_key=True)
+    #you use primary_key = True if you do not want to use default field "id" given by django to your model
+    user_Email = models.EmailField(max_length=30)
+    image_path = models.CharField(max_length=50)
+    prediction_made = models.CharField(max_length=100)
+    user_response = models.CharField(max_length=10)
+    date = models.DateField(max_length=20)
+
+    #Now defining object of our model
+    userresponse_model_obj = models.Manager()
+    class Meta:
+        db_table = "user_result_response"

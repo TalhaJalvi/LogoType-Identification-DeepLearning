@@ -1,0 +1,45 @@
+{% extends 'adminBaseTemplate.html'%}
+
+
+{% block maincontent %}
+
+<br>
+<br>
+   <!--  sale analytics start -->
+<div class="col-xl-12 col-md-12">
+ <div class="card">
+ <div class="card-header">
+ <h5>User Uploaded Images</h5>
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User Email</th>
+      <th scope="col">Predicted Result</th>
+      <th scope="col">User Response</th>
+      <th scope="col">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for data in uploadimgdata  %}
+    <tr>
+      <th scope="row">{{data.auto_increment_id }}</th>
+      <td scope="row">{{data.user_Email}}</td>
+      <td scope="row">{{data.prediction_made}}</td>
+      <td scope="row">{{data.user_response }}</td>
+      <td scope="row"><img src = "{{data.image_path }}" width="150" height = "150"> {{data.date}}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+                                                        
+ </div>
+
+ </div>
+ </div>
+<div>
+ 
+</div>
+
+
+{% endblock maincontent %}

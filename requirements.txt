@@ -1,0 +1,15 @@
+channels     ==           3.0.3
+Django      ==            2.2.14
+django-allauth      ==    0.39.1
+django-countries     ==   5.3.3
+django-crispy-forms   ==  1.7.2
+django-debug-toolbar ==   1.10.1
+Keras ==                  2.4.3
+matplotlib      ==        3.3.2
+mysql        ==           0.0.2
+mysql-connector  ==       2.2.9
+mysqlclient      ==       2.0.3
+numpy            ==       1.19.5
+opencv-python    ==       4.5.1.48
+pylint                ==  2.6.0
+PyMySQL             ==    1.0.2

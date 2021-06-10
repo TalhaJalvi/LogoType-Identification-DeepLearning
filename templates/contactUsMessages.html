@@ -9,15 +9,14 @@
  <div class="card-header">
  <h5>Users Data Only</h5>
  </div>
-
-
- <table style=" display:block;" class="table table-striped" >
+ <table style="width:100" class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Subject</th>
-      <th scope="col">Message</th>
+      <th scope="col"> Message </th>
+      <th scope="col"> Action </th>
     </tr>
   </thead>
   <tbody>
@@ -26,12 +25,12 @@
       <td scope="row">{{message.id}}</td>
       <td scope="row">{{message.cname}}</td>
       <td scope="row">{{message.csubject}}</td>
-      <td scope="row">{{message.cmsg}}</td>
+      <td>{{message.cmsg}}</td>
+      <td><a href="mailto:{{cemail}}"<button type="button" class="btn btn-primary">Reply</button></a></td>
     </tr>
 {% endfor %}
   </tbody>
-</table>
-                                                        
+</table>                                                   
 
  </div>
  

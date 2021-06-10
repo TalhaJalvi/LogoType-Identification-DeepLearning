@@ -174,7 +174,7 @@ def predictimage(request):
 
     # img = cv2.imread('CNN.model/twist institution 14.jpg')
     print(filepathname)
-    img = image.load_img(testimage, target_size=(64,64))
+    img = image.load_img(testimage, target_size=(64,64,3))
     x = image.img_to_array(img)
     x=x/255
     x=x.reshape(1,64,64,3)
@@ -187,21 +187,31 @@ def predictimage(request):
 
     print(testimage)
 
-
+    result=''
     if(classes == 0):
-        print("Combination")
-        result = "Combination"
+        print("Abstract")
+        result = "Abstract"
     elif(classes==1):
-        print("Emblem")  
-        result = "Emblem"
+        print("Combination")  
+        result = "Combination"
     elif(classes==2):
+        print("Emblem")
+        result = "Emblem"
+    elif(classes==3):
         print("Lettermark")
         result = "Lettermark"
-    elif(classes==3):
+    elif(classes==4):
+        print("Mascot")
+        result = "Mascot"
+    elif(classes==5):
+        print("Pictorial")
+        result = "Pictorial"
+    elif(classes==6):
         print("Wordmark")
         result = "Wordmark"
 
-    #U
+
+    
 
    
     return render(request,'modelResult.html',{'testimage':testimage,'result':result})
@@ -365,7 +375,15 @@ def imagesuploadedAndTested(request):
     #Firstly accessing data from database
     try:
         uploadimgdata = user_response.userresponse_model_obj.all()
-        return render(request,'imagesuploadedAndTested.html',{'uploadimgdata':uploadimgdata})
+        email=request.session['email']
+
+        admins = adminuser.adminobject.get(email=email)
+        name = admins.username
+        totalimgtested = user_response.userresponse_model_obj.all().count()
+        successfultests = user_response.userresponse_model_obj.filter(user_response = "Yes").count()
+        failedtests = user_response.userresponse_model_obj.filter(user_response = "No").count()
+
+        return render(request,'imagesuploadedAndTested.html',{'uploadimgdata':uploadimgdata,'email':email,'name':name,'totalimgtested':totalimgtested,'successfultests':successfultests,'failedtests':failedtests})
     except:
         messages.error(request,"Failed to Fetch Data from database")
         return render(request,'imagesuploadedAndTested.html')

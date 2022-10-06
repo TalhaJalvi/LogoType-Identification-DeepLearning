@@ -24,11 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '_lfho6j7wemu2hpwb!skkwtk@ujs(%vjm6)ku!pn^deg)3134p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 #So I can access it on my mobile as in developement phase
-# ALLOWED_HOSTS = ['192.168.43.222', 'namjoosadr.com']
+ALLOWED_HOSTS = ['192.168.43.222', 'namjoosadr.com']
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -94,7 +95,7 @@ DATABASES = {
         #Database name as mySQL,postrsql
         'ENGINE': 'django.db.backends.mysql',
         #Name of my database
-        'NAME': 'logotypedb',
+        'NAME': 'logotype',
         #xamp username and password
         'USER': 'root',
         'PASSWORD': '',

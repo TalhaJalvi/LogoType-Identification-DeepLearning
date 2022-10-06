@@ -79,28 +79,28 @@ WSGI_APPLICATION = 'Logo_Type_Identification_System.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 #We are using mySQL as our database
-DATABASES = {
-    'default': {
-        #Database name as mySQL,postrsql
-        'ENGINE': 'django.db.backends.mysql',
-        #Name of my database
-        'NAME': 'logotype',
-        #xamp username and password
-        'USER': 'root',
-        'PASSWORD': '',
-        #Port number from xamp
-        'PORT': '3306',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         #Database name as mySQL,postrsql
+#         'ENGINE': 'django.db.backends.mysql',
+#         #Name of my database
+#         'NAME': 'logotype',
+#         #xamp username and password
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         #Port number from xamp
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
